@@ -1,0 +1,95 @@
+body
+{
+  font-family: $font-base;
+  overflow-x: hidden;
+}
+
+body, html
+{
+  min-height: 100%;
+  -webkit-overflow-scrolling: touch !important; //Запрещаем скроллинг под фиксированными элементами на IOS для html, body
+}
+
+html.no_scroll
+{
+  
+  overflow: hidden;
+  body
+  {
+    overflow: hidden;
+  }
+}
+
+main
+{
+  padding-top: 80px;
+}
+
+section
+{
+  
+}
+
+img
+{
+  display: block;
+  max-width: 100%;
+}
+
+svg
+{
+  display: block;
+}
+
+use
+{
+  display: block;
+}
+
+iframe
+{
+  
+}
+
+video
+{
+  
+}
+
+a
+{
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+button, input, fieldset
+{
+  background-color: transparent;
+  -webkit-appearance: none;
+  border: none;
+  outline: none;
+  
+  &:focus
+  {
+    outline: none;
+  }
+}
+
+li
+{
+  list-style: none;
+  padding: 0;
+}
+
+ul, ol
+{
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5
+{
+  margin: 0;
+  color: $text-primary;
+}

@@ -1,0 +1,87 @@
+/**
+* Миксин формирует колоночную сетку с помощью float
+*
+* @var string $column Колличество колонок
+* @var string $indent Отступ между колонками
+*
+* @example "@include floatgrid(2, 20px)"
+* @example "@include floatgrid(6, 10px)"
+* @example "@include floatgrid(8)"
+*/
+
+@mixin floatgrid($column: 1, $indent: 0, $vertical-indent: 0) {
+  @extend %clearfix;
+  display: block;
+  margin-left: -$indent / 2;
+  margin-right: -$indent / 2;
+  margin-bottom: -$vertical-indent;
+  
+  > *
+  {
+    float: left;
+    width: -webkit-calc((100% / #{$column}) - #{$indent});
+    width: -moz-calc((100% / #{$column}) - #{$indent});
+    width: calc((100% / #{$column}) - #{$indent});
+    margin-left: $indent / 2;
+    margin-right: $indent / 2;
+    margin-bottom: $vertical-indent;
+  }
+}
+
+%clearfix
+{
+  &::before, &::after
+  {
+    display: table;
+    content: ' ';
+  }
+  
+  &::after
+  {
+    clear: both;
+  }
+}
+
+@mixin calc-minus($width, $operand, $property_key : width) {
+  #{$property_key}: calc(#{$width} - #{$operand});
+  #{$property_key}: -webkit-calc(#{$width} - #{$operand});
+  #{$property_key}: -moz-calc(#{$width} - #{$operand});
+}
+
+@mixin calc-plus($width, $operand, $property_key : width) {
+  #{$property_key}: calc(#{$width} + #{$operand});
+  #{$property_key}: -webkit-calc(#{$width} + #{$operand});
+  #{$property_key}: -moz-calc(#{$width} + #{$operand});
+  
+}
+
+@mixin bg-base($position : center center, $size : cover, $repeat : no-repeat) {
+  background-position: $position;
+  background-size: $size;
+  background-repeat: $repeat;
+}
+
+@mixin bg-url($url) {
+  background-image: url('img/#{$url}');
+}
+
+@mixin bg-fixed() {
+  
+  @include media('>=1024px')
+  {
+    will-change: background, background-position;
+    background-attachment: fixed;
+  }
+}
+
+@mixin hover-bg($bg) {
+  &:hover
+  {
+    background-color: #{$bg};
+  }
+}
+
+@mixin disabled() {
+  background-color: lighten($gray-dark, 10);
+  cursor: default;
+}

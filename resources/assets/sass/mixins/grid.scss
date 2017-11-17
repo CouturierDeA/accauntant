@@ -1,0 +1,85 @@
+/**
+* Миксин формирует колоночную сетку с помощью float
+*
+* @var string $column Колличество колонок
+* @var string $indent Отступ между колонками
+*
+* @example "@include grid(3, 20px)"
+* @example "@include grid(6, 10px)"
+* @example "@include grid(8)"
+*/
+
+@mixin grid($column: 1, $indent: 0) {
+    display:      flex;
+    flex-wrap:    wrap;
+    margin-left:  -$indent / 2;
+    margin-right: -$indent / 2;
+
+    > *
+    {
+        width:        calc((100% / #{$column}) - #{$indent});
+        width:        -webkit-calc((100% / #{$column}) - #{$indent});
+        width:        -moz-calc((100% / #{$column}) - #{$indent});
+        margin-left:  $indent / 2;
+        margin-right: $indent / 2;
+    }
+}
+
+//
+//@each $gridName in $gridNames
+//{
+//    $key: nth($gridName, 1);
+//    $value: nth($gridName, 2);
+//
+//    @include media($value)
+//    {
+//
+//        @for $i from 1 through $grid-columns
+//        {
+//
+//            .#{$key}-#{$i}
+//            {
+//                width: percentage($i/$grid-columns);
+//                display: inline-block;
+//                vertical-align: top;
+//            }
+//
+//            .c#{$key}-#{$i}
+//            {
+//                @include calc-minus(percentage($i/$grid-columns), $gw);
+//                display: inline-block;
+//                vertical-align: top;
+//                margin-left: $gw/2;
+//                margin-right: $gw/2;
+//
+//            }
+//            .o-#{$key}-#{$i}
+//            {
+//                margin-left: percentage($i/$grid-columns);
+//            }
+//
+//        }
+//    }
+//}
+//
+//@mixin container($max_width : $grid-width, $display_grid : 'block', $gutter : 0) {
+//    max-width: $max_width;
+//    margin-left: auto;
+//    margin-right: auto;
+//
+//    @if ($display_grid == 'flex')
+//    {
+//        display: flex;
+//        flex-wrap: wrap;
+//    }
+//
+//    @if ($gutter != 0)
+//    {
+//        padding-left: $gutter;
+//        padding-right: $gutter;
+//    }
+//
+//}
+
+
+
