@@ -12,6 +12,6 @@
     "include-media": "^1.4.9",
     "laravel-mix": "^0.8.3",
     "normalize.css": "^5.0.0",
-    "vue": "^2.3"
+    "vue": "^2.5"
   }
 }
