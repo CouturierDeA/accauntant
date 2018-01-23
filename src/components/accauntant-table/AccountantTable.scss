@@ -1,9 +1,12 @@
 @import "../../scss/core";
 
+// TODO: make style decomposition.
+
 .container {
   @include grid-width();
 }
 
+//.table/
 .table {
   @include grid-width();
   display: table;
@@ -37,6 +40,7 @@
   }
 }
 
+//.table__cell/
 .table__cell {
 
   display: table-cell;
@@ -66,16 +70,18 @@
 
   }
 
+  //.table__cell input
   input {
     text-align: center;
     line-height: 30px;
   }
-
+  //.table__cell:nth-last-of-type(2)
   &:nth-last-of-type(2) {
     text-align: center;
   }
 
   @at-root .table_row .table__cell {
+    //.table_row .table__cell:hover
     &:hover {
       background-color: $complementary;
     }
@@ -98,14 +104,17 @@
   @at-root .table_footer .table__cell {
     position: relative;
 
+    //.table_footer .table__cell:first-child
     &:first-child {
       border-radius: 0 0 0 $br;
     }
 
+    //.table_footer .table__cell:last-child
     &:last-child {
       border-radius: 0 0 $br 0;
     }
 
+    //.table_footer .table__cell::before
     &::before {
       content: '';
       position: absolute;
@@ -133,15 +142,20 @@
 
   cursor: pointer;
 
+  //.table__btn.mod--delete
   &.mod--delete {
     &:hover {
       color: $red;
     }
   }
 
+  //.table__btn.mod--add
   &.mod--add {
-    &:hover {
+    // does nothing
 
+    //.table__btn.mod--add:hover
+    &:hover {
+      // does nothing
     }
   }
 
