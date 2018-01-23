@@ -19,7 +19,7 @@ or items was added or deleted.
 
 git clone https://github.com/CouturierDeA/accauntant.git
 
-# You will need node and NPM to execute the app. You can install them with:
+# You will need node and NPM(or Yarn) to execute the app. You can install them with:
 
 sudo apt-get install nodejs
 sudo apt-get install npm
@@ -32,12 +32,13 @@ After npm was installed:
 
 ``` bash
 npm run dev
+
 ```
 
-to start developing.
+to start developing;
 
 ``` bash
 npm run build_then_serve
 ```
 
-to make build into the dist folder and run demo-server to view compiled project.
+to make build all the project files into the dist folder and run demo-server to view compiled project.
