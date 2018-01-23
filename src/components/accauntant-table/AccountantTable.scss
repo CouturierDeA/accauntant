@@ -29,14 +29,15 @@
 
 }
 
+//.table__row
 .table__row {
   @extend %hover-bg;
   display: table-row;
   width: 100%;
 
+  //.table__row.mod--total
   &.mod--total {
     background-color: $gray;
-
   }
 }
 
@@ -151,8 +152,6 @@
 
   //.table__btn.mod--add
   &.mod--add {
-    // does nothing
-
     //.table__btn.mod--add:hover
     &:hover {
       // does nothing
