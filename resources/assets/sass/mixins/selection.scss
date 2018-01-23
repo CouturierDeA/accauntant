@@ -1,8 +1,0 @@
-@mixin selection($color,$bc) {
-  &::selection
-  {
-    color: #{$color};
-    background: #{$bc};
-  }
-  
-}

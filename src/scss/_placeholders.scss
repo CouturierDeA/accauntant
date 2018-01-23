@@ -1,0 +1,27 @@
+
+%unselectable
+{
+  & *::selection
+  {
+    background-color: transparent;
+  }
+  &::selection
+  {
+    background-color: transparent;
+  }
+
+}
+
+%hover-bg
+{
+  &:hover
+  {
+    background-color: $complementary-light;
+  }
+}
+
+%secondary-bg
+{
+  background-color: $secondary;
+  color: $default;
+}

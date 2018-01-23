@@ -1,0 +1,35 @@
+//Grid
+$gw: 24px;
+$gutter-width: $gw;
+$grid-width-base:774px;
+$grid-width: $grid-width-base + $gutter-width*2;
+$click-area : 8px;
+$grid-columns: 12;
+
+//transitions
+$transition-std: ease-out 0.3s;
+$transition-long: ease-out 0.8s;
+$transition: ease-out;
+
+//colors
+$default : #fff;
+$secondary : #435993;
+$secondary-lighten : lighten($secondary, 7);
+$text-primary : #1c1c1c;
+$complementary : #d9d9d9;
+$complementary-light : #f8f9f9;
+$complementary-dark : #c8c8c8;
+
+$red : #d32f2f;
+
+//fonts
+$font-base : 'Roboto', sans-serif;
+$font-base-thin : 100;
+$font-base-light : 300;
+$font-base-regular : 400;
+
+// Other
+$br : 4px;
+
+$gray: #e8e8e8;
+$border-gray: 1px solid $gray;

@@ -1,0 +1,157 @@
+@import "../../scss/core";
+
+.container {
+  @include grid-width();
+}
+
+.table {
+  @include grid-width();
+  display: table;
+
+  width: 100%;
+  margin-top: 70px;
+
+}
+
+.table_footer {
+  @extend %hover-bg;
+  display: table-footer-group;
+
+}
+
+.table_header {
+  @extend %secondary-bg;
+  display: table-header-group;
+  font-size: 18px;
+
+}
+
+.table__row {
+  @extend %hover-bg;
+  display: table-row;
+  width: 100%;
+
+  &.mod--total {
+    background-color: $gray;
+
+  }
+}
+
+.table__cell {
+
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  border-right: 1px solid;
+  border-color: $complementary;
+  padding: 0 $gw;
+  height: 70px;
+
+  //.table__cell:first-child input
+  &:first-child {
+    text-align: left;
+    font-weight: 500;
+    border-left: 1px solid;
+    border-color: $complementary;
+
+    //.table__cell:first-child input
+    input {
+      text-align: left;
+      padding-left: $gw/2;
+      padding-right: $gw/2;
+    }
+
+  }
+
+  input {
+    text-align: center;
+    line-height: 30px;
+  }
+
+  &:nth-last-of-type(2) {
+    text-align: center;
+  }
+
+  @at-root .table_row .table__cell {
+    &:hover {
+      background-color: $complementary;
+    }
+  }
+
+  @at-root .table_header .table__cell {
+    border-color: $secondary-lighten;
+
+    //.table_header .table__cell:first-child
+    &:first-child {
+      border-radius: $br 0 0 0;
+    }
+
+    //.table_header .table__cell:last-child
+    &:last-child {
+      border-radius: 0 $br 0 0;
+    }
+  }
+
+  @at-root .table_footer .table__cell {
+    position: relative;
+
+    &:first-child {
+      border-radius: 0 0 0 $br;
+    }
+
+    &:last-child {
+      border-radius: 0 0 $br 0;
+    }
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      width: 100%;
+      left: 0;
+      height: 1px;
+      background-color: lighten($text-primary, 25);
+    }
+  }
+
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0
+}
+
+.table__btn {
+  width: 60px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  &.mod--delete {
+    &:hover {
+      color: $red;
+    }
+  }
+
+  &.mod--add {
+    &:hover {
+
+    }
+  }
+
+}
+
+//
+//input[type=number]::-webkit-inner-spin-button,
+//input[type=number]::-webkit-outer-spin-button
+//{
+//  -webkit-appearance: none;
+//  margin: 0;
+//
+//}
