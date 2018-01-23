@@ -1,6 +1,6 @@
 # Vue Accauntant table
 
-Create accauntant-table using vue js.
+Create an accauntant-table using vue js.
 
 - Accauntant table must have at list 3 redactable columns, 
 and a row with the total items quantity and the total items price.
