@@ -29,4 +29,4 @@ yarn watch
 
 Change any file in pesourses/assets and press `ctrl+s`.
 
-To run project you need to open index.html file in your browser.
+Open index.html file in your browser to run the project.
