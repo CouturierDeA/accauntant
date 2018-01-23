@@ -18,9 +18,11 @@ Run command
 ```
 # with npm
 npm install
+npm run watch
 
 # or with Yarn
 yarn install
+yarn watch
 ```
 
 Change any file in pesourses/assets and press `ctrl+s`.
