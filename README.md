@@ -27,6 +27,6 @@ yarn install
 yarn watch
 ```
 
-Change any file in pesourses/assets and press `ctrl+s`.
+Change any file in resourses/assets and press `ctrl+s`.
 
 Open index.html file in your browser to run the project.
