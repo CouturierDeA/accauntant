@@ -1,5 +1,4 @@
-@mixin grid-padding()
-{
+@mixin grid-padding() {
   padding-left: $gutter-width;
   padding-right: $gutter-width;
 
@@ -10,4 +9,16 @@
   margin-left: auto;
   margin-right: auto;
 
+}
+
+@mixin linear-gradient($direction, $gradients...) {
+  background-color: nth($gradients, 1);
+  background-image: linear-gradient($direction, $gradients...);
+}
+
+@mixin position($params...) {
+  top: nth($params, 1);
+  right: nth($params, 2);
+  bottom: nth($params, 3);
+  left: nth($params, 4);
 }

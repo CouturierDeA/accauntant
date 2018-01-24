@@ -1,27 +1,28 @@
 
-%unselectable
-{
-  & *::selection
-  {
+%unselectable {
+  & *::selection {
     background-color: transparent;
   }
-  &::selection
-  {
+  &::selection {
     background-color: transparent;
   }
 
 }
 
-%hover-bg
-{
-  &:hover
-  {
+%hover-bg {
+  &:hover {
     background-color: $complementary-light;
   }
 }
 
-%secondary-bg
-{
+%secondary-bg {
   background-color: $secondary;
   color: $default;
+}
+
+%absolute-extend {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }

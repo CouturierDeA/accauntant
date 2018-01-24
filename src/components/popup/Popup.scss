@@ -1,0 +1,62 @@
+@import "../../scss/core";
+
+//.popup/
+.popup {
+  @include position(0,0,0,0);
+  position: fixed;
+  z-index: 2;
+  background-color: rgba(black, .5);
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  visibility: hidden;
+  opacity: 0;
+
+  transition: visibility $transition-std, opacity $transition-std;
+
+  //.popup.active/
+  &.active {
+
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.popup__wrap {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+.popup__container {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.popup__content {
+  position: relative;
+  padding: $gw;
+
+  background-color: white;
+  border-radius: $br;
+}
+
+.popup__close {
+  @include position($click-area,$click-area,auto,auto);
+  position: absolute;
+  z-index: 1;
+
+  width: 20px;
+  height: 20px;
+
+  padding: $click-area;
+
+  transition: fill $transition-std;
+
+  cursor: pointer;
+
+  &:hover{
+    fill: #d32f2f;
+  }
+}
