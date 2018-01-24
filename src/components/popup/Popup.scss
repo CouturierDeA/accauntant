@@ -2,25 +2,17 @@
 
 //.popup/
 .popup {
-  @include position(0,0,0,0);
+  @include position(0, 0, 0, 0);
   position: fixed;
   z-index: 2;
   background-color: rgba(black, .5);
 
   overflow-x: hidden;
   overflow-y: auto;
+}
 
-  visibility: hidden;
-  opacity: 0;
-
-  transition: visibility $transition-std, opacity $transition-std;
-
-  //.popup.active/
-  &.active {
-
-    visibility: visible;
-    opacity: 1;
-  }
+.popup__title {
+  margin-top: 0;
 }
 
 .popup__wrap {
@@ -43,7 +35,7 @@
 }
 
 .popup__close {
-  @include position($click-area,$click-area,auto,auto);
+  @include position($click-area, $click-area, auto, auto);
   position: absolute;
   z-index: 1;
 
@@ -56,7 +48,7 @@
 
   cursor: pointer;
 
-  &:hover{
+  &:hover {
     fill: #d32f2f;
   }
 }

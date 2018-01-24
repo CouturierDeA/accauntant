@@ -9,6 +9,7 @@
             <AccauntantTableTotal/>
         </div>
         <AddItem/>
+        <router-link class="accountant-button mod--back" tag="button" to="/">Go back</router-link>
     </div>
 
 </template>

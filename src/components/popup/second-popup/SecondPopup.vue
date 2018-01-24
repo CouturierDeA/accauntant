@@ -9,7 +9,7 @@
     export default {
         data() {
             return {
-                greetings: 'Hello from the second popup!'
+                greetings: 'Hello from second popup!'
             }
         },
     }
