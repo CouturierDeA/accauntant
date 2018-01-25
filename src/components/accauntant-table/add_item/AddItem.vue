@@ -1,12 +1,10 @@
 <template>
-    <div class="table">
-        <ul class="table__row">
-            <li class="table__cell"><input type="text" placeholder="add item" v-model="new_item.name"></li>
-            <li class="table__cell"><input type="number" v-model="new_item.number"></li>
-            <li class="table__cell"><input type="number" v-model="new_item.price"></li>
-            <li class="table__cell table__btn mod--add" @click="addItem()">Add</li>
-        </ul>
-    </div>
+    <ul class="table__row">
+        <li class="table__cell"><input type="text" placeholder="add item" v-model="new_item.name"></li>
+        <li class="table__cell"><input type="number" v-model="new_item.number"></li>
+        <li class="table__cell"><input type="number" v-model="new_item.price"></li>
+        <li class="table__cell table__btn mod--add" @click="addItem()">Add</li>
+    </ul>
 
 </template>
 

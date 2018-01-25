@@ -1,14 +1,16 @@
 <template>
     <div class="container">
-        <div class="table">
-            <AccauntantTableHeader/>
-            <AccauntantItem
-                    v-for="(item,key) in computedItems"
-                    v-bind:item="item" :key="key"
-            ></AccauntantItem>
-            <AccauntantTableTotal/>
+        <div class="table__wrap">
+            <div class="table">
+                <AccauntantTableHeader/>
+                <AccauntantItem
+                        v-for="(item,key) in computedItems"
+                        v-bind:item="item" :key="key"
+                />
+                <AccauntantTableTotal/>
+                <AddItem/>
+            </div>
         </div>
-        <AddItem/>
         <router-link class="accountant-button mod--back" tag="button" to="/">Go back</router-link>
     </div>
 

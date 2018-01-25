@@ -1,19 +1,29 @@
 @import "../../scss/core";
 
+
 // TODO: make style decomposition.
 
 .container {
   @include grid-width();
+  @include grid-padding();
 }
 
 //.table/
 .table {
-  @include grid-width();
   display: table;
-
+  table-layout: fixed;
   width: 100%;
-  margin-top: 70px;
+}
 
+.table__wrap {
+  width: 100%;
+  max-width: 100%;
+
+  margin-top: $gw*2;
+  margin-left: auto;
+  margin-right: auto;
+
+  overflow-x: auto;
 }
 
 .table_footer {
@@ -33,7 +43,6 @@
 .table__row {
   @extend %hover-bg;
   display: table-row;
-  width: 100%;
 
   //.table__row.mod--total
   &.mod--total {
@@ -43,10 +52,10 @@
 
 //.table__cell/
 .table__cell {
-
   display: table-cell;
   text-align: center;
   vertical-align: middle;
+  width: 150px;
 
   border-top: 1px solid;
   border-bottom: 1px solid;
@@ -73,6 +82,7 @@
 
   //.table__cell input
   input {
+    max-width: 100%;
     text-align: center;
     line-height: 30px;
   }
@@ -155,6 +165,10 @@
 .accountant-button {
   display: table;
   margin: $gw auto;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 //
