@@ -3,16 +3,10 @@
         <div id="popup" class="popup" v-if="currentPopup">
             <div class="popup__wrap">
                 <div class="popup__container">
-                    <component class="container" v-bind:is="currentPopup">
-                        <transition name="fade" mode="out-in">
-
-                        </transition>
-                        <transition name="fade" mode="out-in">
-
-                        </transition>
-                        <transition name="fade" mode="out-in">
-
-                        </transition>
+                    <component class="container"
+                               ref="popupContent"
+                               tabindex="1"
+                               v-bind:is="currentPopup">
                         <button v-if="currentPopup !='FirstPopup'"
                                 @click="switchPopupTo('FirstPopup')"
                         >Switch to the first popup
@@ -41,13 +35,30 @@
             FirstPopup,
             SecondPopup,
         },
+        mounted() {
+            document.body.addEventListener('keyup', this.onKey)
+        },
+        destroyed() {
+            document.body.removeEventListener('keyup', this.onKey)
+        },
         methods: {
             switchPopupTo(popup_name = null) {
                 dataBus.current_popup = popup_name;
+            },
+            onKey(event) {
+                event.preventDefault();
+                if (event.keyCode === 27) this.switchPopupTo();
             }
         },
         computed: {
             currentPopup() {
+                this.$nextTick(() => {
+                    const element = this.$refs.popupContent;
+                    if (element && element.$el) {
+                        element.$el.focus();
+                    }
+                });
+
                 return dataBus.current_popup;
             }
         }

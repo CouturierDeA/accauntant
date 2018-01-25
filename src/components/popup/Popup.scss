@@ -22,16 +22,26 @@
 }
 
 .popup__container {
+  @include grid-padding();
   display: table-cell;
   vertical-align: middle;
 }
 
 .popup__content {
   position: relative;
+
   padding: $gw;
+  margin-top: $gw;
+  margin-bottom: $gw;
 
   background-color: white;
   border-radius: $br;
+
+  -webkit-appearance: none;
+  &:focus {
+    outline: none;
+    border: none;
+  }
 }
 
 .popup__close {
