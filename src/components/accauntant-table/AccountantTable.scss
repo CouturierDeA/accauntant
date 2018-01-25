@@ -77,7 +77,11 @@
       padding-left: $gw/2;
       padding-right: $gw/2;
     }
+  }
 
+  //.table__cell  .el-input-number
+  .el-input-number{
+    width: 100%;
   }
 
   //.table__cell input

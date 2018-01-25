@@ -12,12 +12,12 @@ export default new Router({
     routes: [
         {
             path: '/',
-            name: 'sign_in',
+            name: 'Sign In',
             component: SignIn
         },
         {
             path: '/accauntant-table',
-            name: 'accauntant-table',
+            name: 'Accauntant Table',
             component: AccauntantTable
         }
     ],

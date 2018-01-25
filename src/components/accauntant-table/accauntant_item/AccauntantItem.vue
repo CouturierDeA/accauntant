@@ -1,15 +1,17 @@
 <template>
     <ul class="table__row">
         <li class="table__cell">
-            <input type="text" v-model="item.name">
+            <el-input v-model="item.name"></el-input>
         </li>
         <li class="table__cell">
-            <input type="number" v-model="item.number">
+            <el-input-number v-model="item.number" controls-position="right" :min="1" :max="100"></el-input-number>
         </li>
         <li class="table__cell">
-            <input type="number" v-model="item.price">
+            <el-input-number v-model="item.price" controls-position="right" :min="1" :max="10000"></el-input-number>
         </li>
-        <li class="table__cell table__btn mod--delete" @click="deleteRow(item)">Delete</li>
+        <li class="table__cell table__btn mod--delete">
+            <el-button @click="deleteRow(item)">Delete</el-button>
+        </li>
     </ul>
 </template>
 

@@ -2,6 +2,7 @@
 
 //.header__nav/
 .header__nav {
+  @extend %unselectable;
   display: flex;
   flex-wrap: wrap;
   margin-right: -$gw/2;
