@@ -47,6 +47,7 @@
     "function-bind": "^1.1.0",
     "html-webpack-plugin": "^2.28.0",
     "http-proxy-middleware": "^0.17.3",
+    "include-media": "^1.4.9",
     "node-sass": "^4.5.0",
     "normalize.scss": "^0.1.0",
     "opn": "^4.0.2",

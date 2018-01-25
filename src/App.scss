@@ -10,12 +10,10 @@ html {
   font-size: 100%;
 }
 
-body {
-  padding-top: 60px;
-}
-
 #app {
   min-height: 100vh;
+
+  padding-top: 60px;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

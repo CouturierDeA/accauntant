@@ -1,0 +1,29 @@
+@import "../scss/core";
+
+//.header__nav/
+.header__nav {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -$gw/2;
+
+}
+
+.header__nav-link {
+  margin: 0 $gw/2;
+  text-decoration: none;
+  color: inherit;
+
+  transition: color $transition;
+
+  &:hover {
+    color: $secondary;
+  }
+
+  &.router-link-exact-active {
+    color: $secondary;
+
+    &:hover {
+      cursor: default;
+    }
+  }
+}

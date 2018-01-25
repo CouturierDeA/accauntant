@@ -35,41 +35,18 @@
 
   @at-root
   .header__logo-image {
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
+
+    @include media('>=tablet'){
+      width: 60px;
+      height: 60px;
+    }
 
   }
 
   @at-root
   .header__logo-description {
     font-weight: 600;
-  }
-}
-
-//.header__nav/
-.header__nav {
-  display: flex;
-  flex-wrap: wrap;
-  margin-right: -$gw/2;
-
-}
-
-.header__nav-link {
-  margin: 0 $gw/2;
-  text-decoration: none;
-  color: inherit;
-
-  transition: color $transition;
-
-  &:hover {
-    color: $secondary;
-  }
-
-  &.router-link-exact-active {
-    color: $secondary;
-
-    &:hover {
-      cursor: default;
-    }
   }
 }
