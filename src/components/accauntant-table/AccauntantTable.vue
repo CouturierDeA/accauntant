@@ -1,15 +1,49 @@
 <template>
     <div class="container">
         <div class="table__wrap">
-            <div class="table">
-                <AccauntantTableHeader/>
-                <AccauntantItem
-                        v-for="(item,key) in computedItems"
-                        v-bind:item="item" :key="key"
-                />
-                <AccauntantTableTotal/>
-                <AddItem/>
-            </div>
+            <el-table class="custom-table"
+                      :data="computedItems"
+                      style="width: 100%">
+                <el-table-column
+                        prop="name"
+                        label="name"
+                        width="180px">
+                    <el-input slot-scope="scope"
+                              v-model="scope.row.name"
+                              placeholder="Item name"/>
+
+                </el-table-column>
+                <el-table-column
+                        prop="number"
+                        label="number"
+                        width="180px">
+                    <el-input-number slot-scope="scope"
+                                     v-model="scope.row.number"
+                                     controls-position="right"
+                                     :min="1" :max="100"/>
+                </el-table-column>
+                <el-table-column
+                        prop="price"
+                        label="price"
+                        width="180px">
+                    <el-input-number slot-scope="scope"
+                                     v-model="scope.row.price"
+                                     controls-position="right"
+                                     :min="1" :max="100"/>
+                </el-table-column>
+                <el-table-column
+                        label="Operations">
+                    <template slot-scope="scope">
+                        <el-button
+                                size="mini"
+                                type="danger"
+                                @click="handleDelete(scope.$index, scope.row)">Delete
+                        </el-button>
+                    </template>
+                </el-table-column>
+            </el-table>
+            <AccauntantTableTotal/>
+            <AddItem/>
         </div>
     </div>
 
@@ -34,10 +68,10 @@
                 items: dataBus.$data.items,
             }
         },
-        created() {
-            dataBus.$on('deleteItem', item => {
-                this.$delete(this.items, this.items.indexOf(item))
-            })
+        methods: {
+            handleDelete($index, $row) {
+                this.$delete(this.items, this.items.indexOf($row))
+            },
 
         },
         computed: {

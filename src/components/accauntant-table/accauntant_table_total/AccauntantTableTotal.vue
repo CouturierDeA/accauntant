@@ -1,10 +1,18 @@
 <template>
-    <ul class="table__row mod--total" v-if="computedDataBus">
-        <li class="table__cell">Total :</li>
-        <li class="table__cell">{{ computedDataBus.total_count }} items</li>
-        <li class="table__cell">{{ computedDataBus.total_price }} $</li>
-        <li class="table__cell"></li>
-    </ul>
+    <el-table class="custom-table"
+              :data="computedDataBus"
+              style="width: 100%">
+        <el-table-column
+                prop="total_count"
+                label="Total Count"
+                width="180px">
+        </el-table-column>
+        <el-table-column
+                prop="total_price"
+                label="Total Price"
+                width="180px">
+        </el-table-column>
+    </el-table>
 </template>
 
 <script>
@@ -13,12 +21,8 @@
     export default {
         computed: {
             computedDataBus() {
-                if (dataBus.total_count && dataBus.total_price){
-                    return dataBus
-                }else{
-                    return false
-                }
-            }
+                return [dataBus];
+            },
         }
     }
 

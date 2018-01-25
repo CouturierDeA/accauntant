@@ -1,6 +1,5 @@
 @import "../../scss/core";
 
-
 // TODO: make style decomposition.
 
 .container {
@@ -61,8 +60,8 @@
   border-bottom: 1px solid;
   border-right: 1px solid;
   border-color: $complementary;
-  padding: 0 $gw;
-  height: 70px;
+  padding: 0 $gw - $gw*1/4;
+  height: 64px;
 
   //.table__cell:first-child
   &:first-child {
@@ -80,7 +79,8 @@
   }
 
   //.table__cell  .el-input-number
-  .el-input-number{
+  @at-root .custom-table .el-input-number,
+  .el-input-number {
     width: 100%;
   }
 

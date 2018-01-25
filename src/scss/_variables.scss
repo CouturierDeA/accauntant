@@ -31,9 +31,9 @@ $default : #fff;
 $secondary : #41b883;
 $secondary-lighten : lighten($secondary, 7);
 $text-primary : #1c1c1c;
-$complementary : #d9d9d9;
-$complementary-light : #f8f9f9;
-$complementary-dark : #c8c8c8;
+$complementary : #f5f7fa;
+$complementary-light : lighten($complementary,7);
+$complementary-dark : darken($complementary,7);
 
 $red : #d32f2f;
 
