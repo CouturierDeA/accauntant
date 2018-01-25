@@ -86,3 +86,6 @@ module.exports = app.listen(port, function (err) {
     opn(uri)
   }
 });
+
+
+let controller = require('./controller')(app);
