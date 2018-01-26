@@ -6,7 +6,7 @@
                      :data="computedDataBus">
                <el-table-column
                        prop="total_count"
-                       label="Total Number"
+                       label="Total"
                        width="100">
                </el-table-column>
                <el-table-column
