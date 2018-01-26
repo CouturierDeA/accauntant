@@ -17,7 +17,7 @@ export default new Router({
         },
         {
             path: '/accountant-table',
-            name: 'Accountant',
+            name: 'Accountant table',
             component: AccountantTable
         }
     ],

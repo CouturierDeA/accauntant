@@ -2,7 +2,7 @@
     <section class="container">
         <h1 class="section__title">First Page</h1>
         <div class="section__controlls">
-            <el-button @click="$router.push('/accountant-table')">Accountant</el-button>
+            <el-button @click="$router.push('/accountant-table')">Accountant table</el-button>
         </div>
     </section>
 </template>
