@@ -1,15 +1,8 @@
 <template>
     <section class="container">
-        <h1 class="section__title">Sign-In</h1>
+        <h1 class="section__title">First Page</h1>
         <div class="section__controlls">
-            <el-button @click="callPopup('FirstPopup')">Show custom popup</el-button>
-            <el-button @click="visible=true">Show popup</el-button>
-            <el-dialog :visible.sync="visible" title="First Modal">
-                <el-button @click="visible2=true">Show second popup</el-button>
-            </el-dialog>
-            <el-dialog :visible.sync="visible2" title="Second Modal">
-                <el-button @click="visible2=false">Show first popup</el-button>
-            </el-dialog>
+            <el-button @click="$router.push('/accountant-table')"> accountant</el-button>
         </div>
     </section>
 </template>

@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import * as AccauntantTable from 'components/accauntant-table/AccauntantTable.vue';
+import * as AccountantTable from 'components/accountant-table/AccountantTable.vue';
 import dataBus from '../data/data.bus';
 import * as SignIn from 'components/pages/sign-in/SignIn.vue';
 
@@ -12,13 +12,13 @@ export default new Router({
     routes: [
         {
             path: '/',
-            name: 'Sign In',
+            name: 'First page',
             component: SignIn
         },
         {
-            path: '/accauntant-table',
-            name: 'Accauntant Table',
-            component: AccauntantTable
+            path: '/accountant-table',
+            name: 'Accountant Table',
+            component: AccountantTable
         }
     ],
 

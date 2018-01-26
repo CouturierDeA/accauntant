@@ -3,20 +3,19 @@
         <div class="table__wrap">
             <el-table class="custom-table"
                       :data="computedItems"
-                      style="width: 100%">
+                      width="100%">
                 <el-table-column
                         prop="name"
                         label="name"
-                        width="180px">
+                        :width="cell_width">
                     <el-input slot-scope="scope"
                               v-model="scope.row.name"
                               placeholder="Item name"/>
-
                 </el-table-column>
                 <el-table-column
                         prop="number"
                         label="number"
-                        width="180px">
+                        width="200px">
                     <el-input-number slot-scope="scope"
                                      v-model="scope.row.number"
                                      controls-position="right"
@@ -25,24 +24,23 @@
                 <el-table-column
                         prop="price"
                         label="price"
-                        width="180px">
+                        width="200px">
                     <el-input-number slot-scope="scope"
                                      v-model="scope.row.price"
                                      controls-position="right"
                                      :min="1" :max="100"/>
                 </el-table-column>
                 <el-table-column
+                        width="200px"
                         label="Operations">
-                    <template slot-scope="scope">
-                        <el-button
-                                size="mini"
-                                type="danger"
-                                @click="handleDelete(scope.$index, scope.row)">Delete
+                    <el-row slot-scope="scope" type="flex" justify="end">
+                        <el-button type="danger"
+                                   @click="handleDelete(scope.$index, scope.row)">Delete
                         </el-button>
-                    </template>
+                    </el-row>
                 </el-table-column>
             </el-table>
-            <AccauntantTableTotal/>
+            <AccountantTableTotal/>
             <AddItem/>
         </div>
     </div>
@@ -50,27 +48,40 @@
 </template>
 
 <script>
-    import AccauntantItem from './accauntant_item/AccauntantItem.vue';
-    import AccauntantTableHeader from './accauntant_table_header/AccauntantTableHeader.vue';
-    import AccauntantTableTotal from './accauntant_table_total/AccauntantTableTotal.vue';
+    import AccountantTableTotal from './accountant_table_total/AccountantTableTotal.vue';
     import AddItem from './add_item/AddItem.vue';
     import dataBus from '../../data/data.bus';
 
     export default {
         components: {
-            AccauntantItem,
-            AccauntantTableHeader,
-            AccauntantTableTotal,
+            AccountantTableTotal,
             AddItem
         },
         data() {
             return {
                 items: dataBus.$data.items,
+                cell_width: 222
             }
         },
         methods: {
             handleDelete($index, $row) {
-                this.$delete(this.items, this.items.indexOf($row))
+                this.$confirm('This will permanently delete the item. Continue?', 'Warning', {
+                    confirmButtonText: 'OK',
+                    cancelButtonText: 'Cancel',
+                    type: 'warning'
+                }).then(() => {
+                    this.$delete(this.items, this.items.indexOf($row));
+                    this.$message({
+                        type: 'success',
+                        message: 'Delete completed'
+                    });
+                }).catch(() => {
+                    this.$message({
+                        type: 'info',
+                        message: 'Delete canceled'
+                    });
+                });
+
             },
 
         },

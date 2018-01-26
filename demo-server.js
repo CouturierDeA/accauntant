@@ -1,9 +1,10 @@
 /* CONFIGURATION */
 
 // Node imports
-let express = require('express');
-let opn = require('opn');
-let app = express(); // Create our app with express
+const path = require('path');
+const express = require('express');
+const opn = require('opn');
+const app = express(); // Create our app with express
 
 app.use(express.static(__dirname + '/dist')); // Set the static files location
 
@@ -19,3 +20,5 @@ app.listen(port, function (err) {
     opn(uri)
 });
 
+const controller = require('./build/controller.js');
+controller(app);

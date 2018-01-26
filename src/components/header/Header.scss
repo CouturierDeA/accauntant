@@ -12,7 +12,7 @@
 .header {
   @include position(0, 0, auto, 0);
   position: fixed;
-  z-index: 1;
+  z-index: 2;
 
   width: 100%;
 
@@ -35,12 +35,13 @@
 
   @at-root
   .header__logo-image {
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
 
-    @include media('>=tablet'){
-      width: 60px;
-      height: 60px;
+    @include media('>=tablet') {
+      width: 48px;
+      height: 48px;
+      padding: 12px;
     }
 
   }

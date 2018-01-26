@@ -38,7 +38,7 @@ npm run dev
 to start developing;
 
 ``` bash
-npm run build_then_serve
+npm run build_serve
 ```
 
 to make build all the project files into the dist folder and run demo-server to view compiled project.

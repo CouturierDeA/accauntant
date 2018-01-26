@@ -1,0 +1,33 @@
+@import "../../../scss/core";
+
+//.table-total/
+.table-total {
+  display: table;
+  width: auto;
+  margin: $gw 0 $gw auto;
+  border: 1px solid $complementary-dark;
+  border-radius: $br;
+
+  //.table-total::before
+  &::before {
+    display: none;
+  }
+
+  .el-table__row td {
+    border-bottom: none;
+  }
+
+  tr, th {
+    //background-color: $complementary;
+  }
+
+  //.table-total .cell
+  .cell {
+    text-align: center;
+  }
+}
+
+.table-total__wrap {
+  overflow-x: auto;
+  width: 100%;
+}

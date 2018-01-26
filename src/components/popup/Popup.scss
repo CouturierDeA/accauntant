@@ -45,12 +45,12 @@
 }
 
 .popup__close {
-  @include position($click-area, $click-area, auto, auto);
+  @include position(18px, 18px, auto, auto);
   position: absolute;
   z-index: 1;
 
-  width: 30px;
-  height: 30px;
+  width: 10px;
+  height: 10px;
 
   padding: $click-area;
 

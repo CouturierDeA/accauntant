@@ -2,23 +2,15 @@
     <transition name="fade" mode="in-out">
         <div id="popup" class="popup" v-if="currentPopup">
             <div class="popup__wrap">
-                <div class="popup__container">
-                    <component class="container"
-                               ref="popupContent"
-                               tabindex="1"
-                               v-bind:is="currentPopup">
-                        <button v-if="currentPopup !='FirstPopup'"
-                                @click="switchPopupTo('FirstPopup')"
-                        >Switch to the first popup
-                        </button>
-                        <button v-if="currentPopup !='SecondPopup'"
-                                @click="switchPopupTo('SecondPopup')"
-                        >Switch to the second popup
-                        </button>
+                <div class="popup__container" ref="popupContent" tabindex="1">
+                    <div class="popup__content">
+                        <p class="popup__title">{{ title }}</p>
+                        <slot>
+                        </slot>
                         <svg class="popup__close" @click="switchPopupTo()">
                             <use xlink:href="#close"></use>
                         </svg>
-                    </component>
+                    </div>
                 </div>
             </div>
         </div>
@@ -27,23 +19,34 @@
 
 <script>
     import dataBus from '../../data/data.bus';
-    import FirstPopup from './first-popup/FirstPopup.vue';
-    import SecondPopup from './second-popup/SecondPopup.vue';
+    import FirstPopup from './first-popup/FirstPopup';
 
     export default {
         components: {
-            FirstPopup,
-            SecondPopup,
+            FirstPopup
+        },
+        props: {
+            visible: this.visible,
+            title: {
+                default: () => {
+                    return 'Popup message'
+                }
+            }
+        },
+        data() {
+            return {
+                name: 'popup',
+            }
         },
         mounted() {
-            document.body.addEventListener('keyup', this.onKey)
+            document.body.addEventListener('keyup', this.onKey);
         },
         destroyed() {
             document.body.removeEventListener('keyup', this.onKey)
         },
         methods: {
             switchPopupTo(popup_name = null) {
-                dataBus.current_popup = popup_name;
+                dataBus.$emit('state_popup', popup_name);
             },
             onKey(event) {
                 event.preventDefault();
@@ -58,8 +61,7 @@
                         element.$el.focus();
                     }
                 });
-
-                return dataBus.current_popup;
+                return this.visible;
             }
         }
     }
