@@ -1,22 +1,60 @@
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
+
+const bodyParser = require('body-parser');
+
 
 module.exports = function (app) {
+    app.use(bodyParser.urlencoded({
+        'extended': 'true'
+    }));
 
-// Controllers
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname + '/../dist/index.html'));
-    });
+    app.use(bodyParser.json());
+
+    app.use(bodyParser.json({
+        type: 'application/vnd.api+json'
+    }));
+
+    // app.get('*', (req, res) => {
+    //     res.sendFile(path.join(__dirname + '/../dist/index.html'));
+    // });
+
+    // Controllers
+    app.get('/users', usersController);
+    app.post('/users', usersController);
+
     app.post('/login', loginController);
+    app.post('/users', usersController);
     app.post('/logout', logoutController);
 
     function loginController(req, res) {
+        const contents = fs.readFileSync(path.join(__dirname + '/../.data/db.json'));
+        const jsonContent = JSON.parse(contents);
+        let status = 200;
 
-        res.status(200).send({
-            user: logged,
-            authorized: logged ? true : logged,
-            session: req.session || null,
-            errors: errors
-        })
+        let logged = login(req.body.email, req.body.password, jsonContent.users);
+        console.log('logged', req.body.email, req.body.password);
+        let errors = null;
+
+        if (logged) { // User is logged
+            // req.session.loggedUser = logged.name;
+            console.log(logged.name + ' is logged');
+
+
+        } else { // User is not logged
+            // req.session.destroy();
+            errors = 'No such User or Pass is invalid';
+            console.log(errors);
+            status = 401;
+        }
+
+        res.status(status).send(logged);
+    }
+
+    function usersController(req, res) {
+        const contents = fs.readFileSync(path.join(__dirname + '/../.data/db.json'));
+        const jsonContent = JSON.parse(contents);
+        res.json(jsonContent);
     }
 
     function logoutController(req, res) {
@@ -38,14 +76,16 @@ module.exports = function (app) {
         })
     }
 
-    function findRole(user) {
-        for (let usr in users) {
-            if ((users[usr].user === user)) {
-                return users[usr].role;
+    /* AUXILIARY METHODS */
+
+    function login(user, pass, usrs) {
+        let logged = null;
+        usrs.map((u, i) => {
+            if ((u.email == user) && (u.password == pass)) {
+                logged = {email: u.email, name: u.name};
             }
-        }
-        console.log('cant find ' + user + ' users role');
-        return null;
+        });
+        return logged;
     }
 
     function isLogged(session) {

@@ -6,12 +6,13 @@ if (!process.env.NODE_ENV) {
 }
 
 const favicon = require('serve-favicon');
-let opn = require('opn');
-let path = require('path');
-let express = require('express');
-let webpack = require('webpack');
-let proxyMiddleware = require('http-proxy-middleware');
-let webpackConfig = require('./webpack.dev.conf');
+const opn = require('opn');
+const path = require('path');
+const express = require('express');
+const webpack = require('webpack');
+const proxyMiddleware = require('http-proxy-middleware');
+const webpackConfig = require('./webpack.dev.conf');
+
 
 const resolve = (file) => path.resolve(__dirname, file);
 
@@ -26,7 +27,6 @@ let proxyTable = config.dev.proxyTable;
 let app = express();
 
 app.use(favicon(resolve('../assets/img/logo.png')));
-
 
 let compiler = webpack(webpackConfig);
 
@@ -88,4 +88,4 @@ module.exports = app.listen(port, function (err) {
 });
 
 
-let controller = require('./controller')(app);
+const controller = require('./controller')(app);

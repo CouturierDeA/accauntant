@@ -8,21 +8,22 @@
 </template>
 
 <script>
-    import Vue from 'vue';
-
     import Header from './components/header/Header.vue';
-    // import Popup from './components/popup/Popup.vue';
-    //
-    // Vue.component('Popup', Popup);
 
     export default {
         data() {
             return {
-                visible: false
+                visible: false,
+                visible2: false,
             }
         },
         components: {
             Header,
+        },
+        methods: {
+            openPopup() {
+                this.visible = true;
+            }
         }
     }
 </script>

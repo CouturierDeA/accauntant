@@ -20,5 +20,4 @@ app.listen(port, function (err) {
     opn(uri)
 });
 
-const controller = require('./build/controller.js');
-controller(app);
+require('./build/controller')(app);

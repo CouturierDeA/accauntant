@@ -10,14 +10,4 @@
     </header>
 </template>
 
-<script>
-    import RouterNav from '../../router/RouterNav.vue'
-
-    export default {
-        components: {
-            RouterNav
-        },
-    }
-</script>
-
 <style src="./Header.scss" lang="scss"></style>

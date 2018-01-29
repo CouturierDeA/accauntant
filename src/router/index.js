@@ -3,48 +3,51 @@ import Router from 'vue-router';
 
 import * as AccountantTable from 'components/accountant-table/AccountantTable.vue';
 import dataBus from '../data/data.bus';
+import store from '../store';
 import * as SignIn from 'components/pages/sign-in/SignIn.vue';
 
 Vue.use(Router);
 
-export default new Router({
+const routerConfig = {
     mode: 'history',
     routes: [
         {
             path: '/',
-            name: 'First page',
-            component: SignIn
+            name: 'Sign In',
+            component: SignIn,
+            meta: {requiresAuth: false}
         },
         {
             path: '/accountant-table',
             name: 'Accountant table',
-            component: AccountantTable
-        }
+            component: AccountantTable,
+            meta: {requiresAuth: true}
+        },
     ],
+};
 
-    beforeEach(to,
-               from,
-               next) {
-        dataBus.loading = true;
+const router = new Router(routerConfig);
 
-        if (to.matched.some((record) => record.meta.requiresAuth)) {
-            next();
-            if (!store.state.user.authorized) {
-                next({
-                    path: '/login',
-                });
-            } else {
-                next();
-            }
-        } else {
-            next();
-        }
-    },
-    afterEach(to, from) {
-        dataBus.loading = false;
-    },
-    onReady() {
-        dataBus.loading = false;
+function afterEach(to, from) {
+    dataBus.loading = false;
+}
+
+function onReady() {
+    dataBus.loading = false;
+}
+
+function beforeEach(to, from, next) {
+
+    if (to.matched.some((record) => record.meta.requiresAuth)) {
+        !store.state.user.authorized ?  next({path: '/',}) : next();
+
+    } else {
+        next();
     }
+}
 
-})
+router.beforeEach(beforeEach);
+router.afterEach(afterEach);
+router.onReady(onReady);
+
+export default router;

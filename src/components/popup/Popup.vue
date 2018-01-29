@@ -1,13 +1,13 @@
 <template>
     <transition name="fade" mode="in-out">
-        <div id="popup" class="popup" v-if="currentPopup">
-            <div class="popup__wrap">
-                <div class="popup__container" ref="popupContent" tabindex="1">
+        <div id="popup" class="popup" v-if="visible" tabindex="-1">
+            <div class="popup__wrap" ref="popupWrap" @click="handleWrapperClick($event)">
+                <div class="popup__container popup__cont" ref="popupContent" tabindex="1">
                     <div class="popup__content">
                         <p class="popup__title">{{ title }}</p>
                         <slot>
                         </slot>
-                        <svg class="popup__close" @click="switchPopupTo()">
+                        <svg class="popup__close" @click="closePopup()">
                             <use xlink:href="#close"></use>
                         </svg>
                     </div>
@@ -18,25 +18,30 @@
 </template>
 
 <script>
-    import dataBus from '../../data/data.bus';
-    import FirstPopup from './first-popup/FirstPopup';
-
     export default {
-        components: {
-            FirstPopup
-        },
         props: {
-            visible: this.visible,
+            name: {
+                default: () => {
+                    return 'Popup'
+                }
+            },
+            listener: {
+                default: () => {
+                    return false
+                }
+            },
+            visible: {
+                type: Boolean,
+                default: () => {
+                    return false
+                }
+            },
             title: {
                 default: () => {
                     return 'Popup message'
                 }
             }
-        },
-        data() {
-            return {
-                name: 'popup',
-            }
+
         },
         mounted() {
             document.body.addEventListener('keyup', this.onKey);
@@ -45,23 +50,32 @@
             document.body.removeEventListener('keyup', this.onKey)
         },
         methods: {
-            switchPopupTo(popup_name = null) {
-                dataBus.$emit('state_popup', popup_name);
+            focusOn(el) {
+                const element = this.$refs[el];
+                if (element && element.$el) {
+                    this.$nextTick(() => {
+                        element.$el.focus();
+                    });
+                }
+            },
+            openPopup() {
+                this.visible = true;
+            },
+            closePopup() {
+                this.$emit('update:visible', false);
+                this.$message({
+                    type: 'info',
+                    message: `${this.name} closed`
+                });
+            },
+            handleWrapperClick($event) {
+                if ($event.target.classList.contains('popup__container')) {
+                    this.closePopup();
+                }
             },
             onKey(event) {
                 event.preventDefault();
-                if (event.keyCode === 27) this.switchPopupTo();
-            }
-        },
-        computed: {
-            currentPopup() {
-                this.$nextTick(() => {
-                    const element = this.$refs.popupContent;
-                    if (element && element.$el) {
-                        element.$el.focus();
-                    }
-                });
-                return this.visible;
+                if (event.keyCode === 27) this.closePopup();
             }
         }
     }
