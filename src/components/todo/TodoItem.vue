@@ -1,6 +1,10 @@
 <template>
     <div class="task el-tab-pane" :class="{complete : taskComplete}">
-        <el-checkbox color="primary" v-model="taskComplete"><span class="text">{{ task.name }}</span></el-checkbox>
+        <el-checkbox class="task__complete"
+                     color="primary"
+                     v-model="taskComplete">
+
+        </el-checkbox><span class="text">{{ task.name }}</span>
         <slot></slot>
     </div>
 
@@ -25,9 +29,10 @@
             }
         }
     };
+
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
     @import "../../scss/core";
 
     .task {
@@ -41,6 +46,10 @@
 
     .complete .text {
         text-decoration: line-through;
+    }
+
+    .task__complete{
+        margin-right: $gw/2;
     }
 
     .task__delete {

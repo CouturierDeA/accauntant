@@ -4,8 +4,10 @@
         <Tab :activeTab.sync="activeTab" title="Task List">
 
             <TabPane name="pending" :count="computedTasks.pending.length">
+
                 <TodoItem v-for="(task,key) in computedTasks.pending"
                           v-bind:task="task">
+
                     <el-button class="task__delete"
                                type="danger"
                                @click="deleteTask(task)">Delete
@@ -14,6 +16,7 @@
 
             </TabPane>
             <TabPane name="completed" :count="computedTasks.completed.length">
+
                 <TodoItem v-for="(task,key) in computedTasks.completed"
                           v-bind:task="task">
                     <el-button class="task__delete"
@@ -24,6 +27,7 @@
 
             </TabPane>
             <TabPane name="deleted" :count="deleted.length">
+
                 <TodoItem v-for="(task,key) in deleted"
                           v-bind:task="task">
                     <el-button class="task__delete"
@@ -31,6 +35,7 @@
                                @click="restoreTask(task)">Restore
                     </el-button>
                 </TodoItem>
+
             </TabPane>
         </Tab>
 
@@ -43,8 +48,7 @@
 </template>
 
 <script>
-    // localStorage.clear();
-    // import defaultTasks from '../../data/data.tasks';
+
     import TodoItem from '../../components/todo/TodoItem.vue';
 
     export default {
@@ -65,8 +69,7 @@
             computedTasks: function (nv, ov) {
                 if (nv !== ov) {
                     this.$store.commit('tasks/setTasks', this.tasks);
-                    // this.$store.dispatch('tasks/updateAll', this.tasks).then().catch(e => {
-                    // })
+                    // this.$store.dispatch('tasks/updateAll', this.tasks).then().catch(e => {})
                 }
             }
         },
@@ -80,7 +83,6 @@
                 function filterByComplete(obj) {
                     (obj.complete) ? tasksSorted.completed.push(obj) : tasksSorted.pending.push(obj)
                 }
-                console.log(this.$store.getters['tasks/getTasks']);
 
                 this.tasks.filter(filterByComplete);
 

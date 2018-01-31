@@ -1,7 +1,7 @@
 <template>
-    <div v-show="$parent.activeTab === name"
-         class="tab__pane"
-         :class="`mod--${name}`">
+    <div v-show="computedTab === name"
+         :class="classObj"
+         class="tab__pane">
         <slot></slot>
     </div>
 
@@ -10,6 +10,11 @@
 <script>
 
     export default {
+        data() {
+            return {
+                control: {name: this.name, count: this.count, component: this}
+            }
+        },
         props: {
             name: {
                 default: () => {
@@ -23,22 +28,43 @@
             },
             tab: this.tab
         },
-        data() {
-            return {
-                control: {
-                    name: this.name,
-                    count: this.count
+        created() {
+            this.addControll()
+        },
+        destroyed() {
+            this.removeControll()
+
+        },
+        methods: {
+            addControll() {
+                const controls = this.$parent.controls;
+
+                if (controls.indexOf(this.control) === -1) {
+                    controls.push(this.control);
+                }
+
+            },
+            removeControll() {
+                const controls = this.$parent.controls;
+                const controlIndex = controls.indexOf(this.control);
+
+                if (controlIndex !== -1) {
+                    this.$delete(controls, controlIndex);
+                }
+
+            }
+        },
+        computed: {
+            computedTab(){
+                return this.$parent.activeTab;
+            },
+            classObj() {
+                return {
+                    [`mod--${this.name}`]: this.name,
+                    active: (this.computedTab === this.name)
                 }
             }
         },
-        created() {
-            this.$parent.controls.push({name: this.name, count: this.count, link: this});
-        },
-        destroyed() {
-            const controls = this.$parent.controls;
-            this.$delete(this.$parent.controls, this.$parent.controls.indexOf(this.name));
-        },
-        methods: {},
     };
 
 </script>
