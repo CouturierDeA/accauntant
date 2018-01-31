@@ -1,7 +1,5 @@
 <template>
-    <div v-show="computedTab === name"
-         :class="classObj"
-         class="tab__pane">
+    <div class="tab__pane" :class="classObj">
         <slot></slot>
     </div>
 
@@ -12,7 +10,8 @@
     export default {
         data() {
             return {
-                control: {name: this.name, count: this.count, component: this}
+                control: {name: this.name, count: this.count, component: this},
+                shift: 0
             }
         },
         props: {
@@ -55,7 +54,7 @@
             }
         },
         computed: {
-            computedTab(){
+            computedTab() {
                 return this.$parent.activeTab;
             },
             classObj() {
@@ -63,7 +62,7 @@
                     [`mod--${this.name}`]: this.name,
                     active: (this.computedTab === this.name)
                 }
-            }
+            },
         },
     };
 
@@ -72,21 +71,15 @@
 <style lang="scss">
     @import "../../../scss/core";
 
-    .task {
-        display: flex;
-        align-items: center;
+    .tab__pane {
+        min-width: 100%;
 
-        & + .task {
-            margin-top: $gw/2;
+        opacity: 0;
+        transition: opacity $transition-std;
+
+        &.active {
+            opacity: 1;
         }
-    }
-
-    .complete .text {
-        text-decoration: line-through;
-    }
-
-    .task__delete {
-        margin-left: auto;
     }
 
     .fade-enter-active, .fade-leave-active {

@@ -1,10 +1,19 @@
+const bodyParser = require('body-parser');
 const fs = require("fs");
 const path = require("path");
+const session = require('express-session');
 
-const bodyParser = require('body-parser');
-
+// process.env.PORT
 
 module.exports = function (app) {
+
+    app.use(session({
+        saveUninitialized: true,
+        resave: true,
+        secret: 'MY_SECRET'
+    }));
+
+
     app.use(bodyParser.urlencoded({
         'extended': 'true'
     }));
@@ -29,6 +38,19 @@ module.exports = function (app) {
     app.post('/users', usersController);
     app.post('/logout', logoutController);
 
+    function setSessionUser(session, name) {
+        session.loggedUser = name;
+        console.log(name + ' is logged');
+    }
+
+    function endSession(session) {
+        if (session) {
+            session.destroy();
+        } else {
+            console.log('no session');
+        }
+    }
+
     function loginController(req, res) {
         const contents = fs.readFileSync(path.join(__dirname + '/../.data/db.json'));
         const jsonContent = JSON.parse(contents);
@@ -39,12 +61,12 @@ module.exports = function (app) {
         let errors = null;
 
         if (logged) { // User is logged
-            // req.session.loggedUser = logged.name;
-            console.log(logged.name + ' is logged');
+            setSessionUser(req.session, logged.name);
 
 
         } else { // User is not logged
-            // req.session.destroy();
+            endSession(req.session);
+
             errors = 'No such User or Pass is invalid';
             console.log(errors);
             status = 401;
@@ -66,8 +88,7 @@ module.exports = function (app) {
             user = req.session.loggedUser;
             console.log(user + ' is logged out');
         }
-
-        req.session.destroy();
+        endSession(req.session);
 
         res.status(200).send({
             user: null,

@@ -1,6 +1,6 @@
-var utils = require('./utils')
-var config = require('../config')
-var isProduction = process.env.NODE_ENV === 'production'
+const utils = require('./utils');
+const config = require('../config');
+let isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
   loaders: utils.cssLoaders({
@@ -14,4 +14,4 @@ module.exports = {
       browsers: ['last 2 versions']
     })
   ]
-}
+};

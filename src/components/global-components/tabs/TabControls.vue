@@ -9,7 +9,6 @@
             </button>
         </li>
     </ul>
-
 </template>
 
 <script>

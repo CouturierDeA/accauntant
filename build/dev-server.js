@@ -13,7 +13,6 @@ const webpack = require('webpack');
 const proxyMiddleware = require('http-proxy-middleware');
 const webpackConfig = require('./webpack.dev.conf');
 
-
 const resolve = (file) => path.resolve(__dirname, file);
 
 // default port where dev server listens for incoming traffic
@@ -25,6 +24,8 @@ let autoOpenBrowser = !!config.dev.autoOpenBrowser;
 let proxyTable = config.dev.proxyTable;
 
 let app = express();
+
+const controller = require('./controller')(app);
 
 app.use(favicon(resolve('../assets/img/logo.png')));
 
@@ -87,5 +88,3 @@ module.exports = app.listen(port, function (err) {
   }
 });
 
-
-const controller = require('./controller')(app);

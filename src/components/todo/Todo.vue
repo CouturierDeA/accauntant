@@ -1,7 +1,7 @@
 <template>
     <div class="todo form__controll">
 
-        <Tab :activeTab.sync="activeTab" title="Task List">
+        <Tab :activeTab.sync="activeTab" :watchContent="computedTasks" title="Task List">
 
             <TabPane name="pending" :count="computedTasks.pending.length">
 
@@ -15,6 +15,7 @@
                 </TodoItem>
 
             </TabPane>
+
             <TabPane name="completed" :count="computedTasks.completed.length">
 
                 <TodoItem v-for="(task,key) in computedTasks.completed"
@@ -26,6 +27,7 @@
                 </TodoItem>
 
             </TabPane>
+
             <TabPane name="deleted" :count="deleted.length">
 
                 <TodoItem v-for="(task,key) in deleted"
@@ -47,6 +49,7 @@
     </div>
 </template>
 
+
 <script>
 
     import TodoItem from '../../components/todo/TodoItem.vue';
@@ -63,7 +66,7 @@
                 deleted: []
             }
         },
-        created(){
+        created() {
         },
         watch: {
             computedTasks: function (nv, ov) {
