@@ -52,6 +52,7 @@
 
     .tab__control-btn {
         @extend %btn;
+        @extend %unselectable;
     }
 
     .tab__control {

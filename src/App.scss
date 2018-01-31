@@ -17,6 +17,8 @@ html {
 }
 
 #app {
+  @extend %scrollbar;
+
   padding-top: 100px;
 
   -webkit-font-smoothing: antialiased;

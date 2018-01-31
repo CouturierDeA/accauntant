@@ -1,10 +1,9 @@
 <template>
     <div class="todo form__controll">
 
-        <Tab :activeTab.sync="activeTab" :watchContent="computedTasks" title="Task List">
+        <Tab :activeTab.sync="activeTab" :animateOnChange="computedTasks" title="Task List">
 
             <TabPane name="pending" :count="computedTasks.pending.length">
-
                 <TodoItem v-for="(task,key) in computedTasks.pending"
                           v-bind:task="task">
 
@@ -60,7 +59,7 @@
         },
         data() {
             return {
-                activeTab: 'pending',
+                activeTab: 'completed',
                 newTaskName: '',
                 tasks: this.$store.getters['tasks/getTasks'],
                 deleted: []

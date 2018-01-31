@@ -75,7 +75,7 @@
         min-width: 100%;
 
         opacity: 0;
-        transition: opacity $transition-std;
+        transition: opacity $transition-bezier;
 
         &.active {
             opacity: 1;

@@ -16,7 +16,7 @@
                 <el-table-column
                         prop="number"
                         label="number"
-                        width="200px">
+                        :width="cell_width">
                     <el-input-number slot-scope="scope"
                                      v-model="scope.row.number"
                                      controls-position="right"
@@ -25,14 +25,14 @@
                 <el-table-column
                         prop="price"
                         label="price"
-                        width="200px">
+                        :width="cell_width">
                     <el-input-number slot-scope="scope"
                                      v-model="scope.row.price"
                                      controls-position="right"
                                      :min="1" :max="100"/>
                 </el-table-column>
                 <el-table-column
-                        width="200px"
+                        :width="cell_width"
                         label="Operations">
                     <el-row slot-scope="scope" type="flex" justify="end">
                         <el-button type="danger"
@@ -61,7 +61,7 @@
         data() {
             return {
                 items: dataBus.$data.items,
-                cell_width: 222,
+                cell_width: 195,
                 currentPage: 1
             }
         },

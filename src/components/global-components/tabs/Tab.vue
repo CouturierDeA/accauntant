@@ -1,9 +1,9 @@
 <template>
-    <div class="tab" @tabUpdate="tabUpdated">
+    <div class="tab">
         <h3 class="tab__title">{{ title }}</h3>
         <TabControls :controls="controls" :activeTab="activeTab" @activeTab="switchTab"/>
         <div class="tab__panes">
-            <div class="tab__slider"  ref="tabSlider" :style="sliderStyle">
+            <div class="tab__slider" :class="{  'transition' : transition }" ref="tabSlider" :style="sliderStyle">
                 <slot/>
             </div>
         </div>
@@ -28,7 +28,7 @@
                     return false
                 }
             },
-            watchContent:{
+            animateOnChange: {
                 default: () => {
                     return false
                 }
@@ -38,33 +38,32 @@
             return {
                 name: 'tab',
                 controls: [],
+                transition: false,
                 shift: 0,
                 height: '',
             }
         },
         mounted() {
-            this.slideTab();
-            window.addEventListener('resize', this.slideTab);
-            if(this.watchContent){
-                this.$watch('watchContent', function(){
-                    this.slideTab();
-                });
+            this.animateTab();
+            setTimeout(()=>{ this.transition = true; });
+
+            if (this.animateOnChange) {
+                this.$watch('animateOnChange', ()=> {this.animateTab();});
             }
+            window.addEventListener('resize', this.animateTab);
         },
         destroyed() {
-            window.removeEventListener('resize', this.slideTab)
+            window.removeEventListener('resize', this.animateTab)
         },
         watch: {
             activeTab: function (nv, ov) {
                 this.$nextTick(() => {
-                    this.slideTab();
+                    this.animateTab();
                 });
             }
         },
         computed: {
             sliderStyle() {
-                console.log('this.shift', this.shift);
-
                 return {
                     'transform': `translateX(${-this.shift}px)`,
                     'height': this.height
@@ -72,16 +71,12 @@
             }
         },
         methods: {
-            tabUpdated(){
-              alert('tabUpdated');
-            },
-            slideTab() {
+            animateTab() {
                 const tabSlider = this.$refs.tabSlider;
                 if (tabSlider) {
                     let activeTab = tabSlider.querySelector('.tab__pane.active');
                     if (activeTab) {
                         this.shift = activeTab.offsetLeft;
-                        console.log(activeTab.offsetHeight);
                         this.height = `${activeTab.offsetHeight}px`;
                     }
                 }
@@ -107,7 +102,10 @@
         align-items: flex-start;
 
         will-change: transform, height;
-        transition: transform $transition-long, height $transition-long;
+
+        &.transition {
+            transition: transform $transition-bezier, height $transition-bezier;
+        }
     }
 
 </style>

@@ -1,10 +1,11 @@
 <template>
-    <div class="task el-tab-pane" :class="{complete : taskComplete}">
+    <div class="task" :class="{complete : taskComplete}">
         <el-checkbox class="task__complete"
                      color="primary"
                      v-model="taskComplete">
 
-        </el-checkbox><span class="text">{{ task.name }}</span>
+        </el-checkbox>
+        <span class="text">{{ task.name }}</span>
         <slot></slot>
     </div>
 
@@ -48,7 +49,7 @@
         text-decoration: line-through;
     }
 
-    .task__complete{
+    .task__complete {
         margin-right: $gw/2;
     }
 
