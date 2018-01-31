@@ -15,11 +15,13 @@ module.exports = function (app) {
         type: 'application/vnd.api+json'
     }));
 
-    // app.get('*', (req, res) => {
-    //     res.sendFile(path.join(__dirname + '/../dist/index.html'));
-    // });
-
     // Controllers
+    if (process.env.NODE_ENV === 'demo') {
+        app.get('*', (req, res) => {
+            res.sendFile(path.join(__dirname + '/../dist/index.html'));
+        });
+    }
+
     app.get('/users', usersController);
     app.post('/users', usersController);
 
