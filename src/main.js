@@ -5,9 +5,9 @@ import router from './router';
 import store from './store';
 
 import App from './App.vue';
-import GlobalVomponents from './components/global-components/global-components.js'
+import GlobalComponents from './components/global-components/global-components.js';
 
-Vue.use(GlobalVomponents);
+Vue.use(GlobalComponents);
 Vue.use(ElementUI);
 
 /* eslint-disable no-new */

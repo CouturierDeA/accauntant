@@ -1,6 +1,7 @@
 <template>
-    <div class="container">
+    <div class="container form__controll">
         <div class="table__wrap">
+            <AddItem/>
             <el-table class="custom-table"
                       :data="computedItems"
                       width="100%">
@@ -41,7 +42,7 @@
                 </el-table-column>
             </el-table>
             <AccountantTableTotal/>
-            <AddItem/>
+
         </div>
     </div>
 
@@ -60,7 +61,8 @@
         data() {
             return {
                 items: dataBus.$data.items,
-                cell_width: 222
+                cell_width: 222,
+                currentPage: 1
             }
         },
         methods: {
@@ -83,9 +85,18 @@
                 });
 
             },
+            handleCurrentChange($event){
+                alert($event)
+            },
+            handleSizeChange($event){
+                alert($event)
+            }
 
         },
         computed: {
+            count(){
+                return dataBus.$data.total_count;
+            },
             computedItems: {
                 get: function () {
                     let total_count = 0;

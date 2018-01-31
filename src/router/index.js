@@ -1,9 +1,11 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import * as AccountantTable from 'components/accountant-table/AccountantTable.vue';
 import dataBus from '../data/data.bus';
 import store from '../store';
+
+import * as AccountantTable from 'components/accountant-table/AccountantTable.vue';
+import * as Tasks from 'components/pages/tasks/Tasks.vue';
 import * as SignIn from 'components/pages/sign-in/SignIn.vue';
 
 Vue.use(Router);
@@ -16,6 +18,11 @@ const routerConfig = {
             name: 'Sign In',
             component: SignIn,
             meta: {requiresAuth: false}
+        },
+        {
+            path: '/tasks',
+            name: 'Tasks',
+            component: Tasks,
         },
         {
             path: '/accountant-table',
@@ -39,7 +46,7 @@ function onReady() {
 function beforeEach(to, from, next) {
 
     if (to.matched.some((record) => record.meta.requiresAuth)) {
-        !store.state.user.authorized ?  next({path: '/',}) : next();
+        !store.state.user.authorized ? next({path: '/',}) : next();
 
     } else {
         next();

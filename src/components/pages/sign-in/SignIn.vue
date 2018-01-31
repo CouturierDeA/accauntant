@@ -1,7 +1,8 @@
 <template>
     <section class="container">
         <h1 class="section__title">Sign In</h1>
-        <div class="section__controlls">
+        <div class="section__controlls form__controll">
+         
             <el-form>
                 <div class="form__input-wrap">
                     <el-input name="email"

@@ -3,9 +3,10 @@
         <el-table class="table-add"
                   width="100%"
                   :data="[new_item]">
+
             <el-table-column
                     prop="name"
-                    label="name"
+                    label="Add item"
                     :width="cell_width">
                 <el-input placeholder="Item name" slot-scope="scope"
                           v-model="scope.row.name"/>
