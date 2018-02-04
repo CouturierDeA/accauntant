@@ -1,3 +1,5 @@
+import ElementUI from 'element-ui';
+
 import ErrorBlock from '../error-block/ErrorBlock.vue';
 import Popup from '../popup/Popup.vue';
 
@@ -12,6 +14,7 @@ import vValidateConfig from '../../vee-validate/config';
 const MyPlugin = {
     install(Vue) {
         Vue.use(VeeValidate, vValidateConfig);
+        Vue.use(ElementUI);
         Vue.component('AnimatedList', AnimatedList);
         Vue.component('ErrorBlock', ErrorBlock);
         Vue.component('Popup', Popup);
