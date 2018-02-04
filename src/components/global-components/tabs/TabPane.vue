@@ -1,5 +1,5 @@
 <template>
-    <div class="tab__pane" :class="classObj">
+    <div class="tab__pane" v-if="computedTab === name" :class="classObj">
         <slot></slot>
     </div>
 
@@ -10,12 +10,17 @@
     export default {
         data() {
             return {
-                control: {name: this.name, count: this.count, component: this},
+                control: {name: this.name, label: this.label, count: this.count, component: this},
                 shift: 0
             }
         },
         props: {
             name: {
+                default: () => {
+                    return 'TabPane'
+                }
+            },
+            label: {
                 default: () => {
                     return 'Label'
                 }
@@ -26,6 +31,8 @@
                 }
             },
             tab: this.tab
+        },
+        mounted() {
         },
         created() {
             this.addControll()
@@ -68,26 +75,4 @@
 
 </script>
 
-<style lang="scss">
-    @import "../../../scss/core";
-
-    .tab__pane {
-        min-width: 100%;
-
-        opacity: 0;
-        transition: opacity $transition-bezier;
-
-        &.active {
-            opacity: 1;
-        }
-    }
-
-    .fade-enter-active, .fade-leave-active {
-        transition: opacity .5s
-    }
-
-    .fade-enter, .fade-leave-to {
-        opacity: 0
-    }
-
-</style>
+<style lang="scss" src="./TabPane.scss"></style>

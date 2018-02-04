@@ -1,6 +1,7 @@
 <template>
     <section class="container tasks">
-        <h2 class="section__title">Tasks</h2>
+        <h2 class="section__title">{{ $t('tasks.title') }}</h2>
+        <AnimatedList></AnimatedList>
         <Todo/>
     </section>
 </template>
@@ -21,6 +22,7 @@
 
     .tasks {
         @include grid-padding();
+
     }
 
 </style>

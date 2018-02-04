@@ -4,10 +4,13 @@ import VueI18n from 'vue-i18n';
 
 import store from 'store';
 
-export default class I18n {
+class I18n {
 
-    defaultLocale = 'en';
-    locales = ['en', 'ru', 'uk'];
+    constructor() {
+        this.defaultLocale = 'en';
+        this.locales = ['en', 'ru', 'uk'];
+    }
+    i18n;
 
     init(priority) {
         priority.push(this.defaultLocale);
@@ -20,20 +23,20 @@ export default class I18n {
             }
         }
 
-        Vue.use(VueI18n);
-
         const messages = {};
         for (const locale of this.locales) {
             messages[locale] = {};
         }
 
+        Vue.use(VueI18n);
         this.i18n = new VueI18n({
             locale: startLocale,
+            silentTranslationWarn: false,
             messages,
         });
 
         return this.loadLocaleData(startLocale).then(() => {
-            Validator.setLocale(startLocale);
+            Validator.localize(startLocale);
             return this.i18n;
         });
     }
@@ -41,7 +44,7 @@ export default class I18n {
     loadLocaleData(locale) {
         store.state.loading = true;
 
-        return System.import('~assets/i18n/' + locale + '.json')
+        return System.import('../assets/i18n/' + locale + '.json')
             .then((data) => {
                 this.i18n.setLocaleMessage(locale, data);
 
@@ -64,16 +67,13 @@ export default class I18n {
                             };
                     }
                 }
-                Validator.updateDictionary(validationDictionary);
+                Validator.localize(validationDictionary);
 
                 store.state.loading = false;
 
                 return data;
             });
-    }
-
-    /**
-     * Instance of initialized vue-i18n plugin.
-     */
-    i18n;
+    };
 }
+
+export default new I18n();

@@ -3,8 +3,8 @@
         <router-link v-for="(route,key) in routesGetter" :class="`${class_name}__nav-link`"
                      :key="key"
                      :to="`${route.path}`"
-                     v-text="route.name"/>
-        <a v-if="auth" href="#" class="header__nav-link" @click="onLogOut($event)">Log Out</a>
+                     v-text="$t(`${route.name}.title`)"/>
+        <a v-if="auth" href="#" class="header__nav-link" @click="onLogOut($event)">{{ $t('general.logout') }}</a>
     </nav>
 </template>
 

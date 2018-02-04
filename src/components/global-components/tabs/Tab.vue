@@ -1,10 +1,10 @@
 <template>
-    <div class="tab">
+    <div class="tab" >
         <h3 class="tab__title">{{ title }}</h3>
         <TabControls :controls="controls" :activeTab="activeTab" @activeTab="switchTab"/>
         <div class="tab__panes">
-            <div class="tab__slider" :class="{  'transition' : transition }" ref="tabSlider" :style="sliderStyle">
-                <slot/>
+            <div class="tab__slider" :class="{ 'transition' : transition }" ref="tabSlider" :style="sliderStyle">
+                <slot ref="tabSlides"></slot>
             </div>
         </div>
     </div>
@@ -20,7 +20,7 @@
         props: {
             title: {
                 default: () => {
-                    return 'Tabs'
+                    return ''
                 }
             },
             activeTab: {
@@ -38,28 +38,9 @@
             return {
                 name: 'tab',
                 controls: [],
-                transition: false,
+                transition: true,
                 shift: 0,
                 height: '',
-            }
-        },
-        mounted() {
-            this.animateTab();
-            setTimeout(()=>{ this.transition = true; });
-
-            if (this.animateOnChange) {
-                this.$watch('animateOnChange', ()=> {this.animateTab();});
-            }
-            window.addEventListener('resize', this.animateTab);
-        },
-        destroyed() {
-            window.removeEventListener('resize', this.animateTab)
-        },
-        watch: {
-            activeTab: function (nv, ov) {
-                this.$nextTick(() => {
-                    this.animateTab();
-                });
             }
         },
         computed: {
@@ -71,16 +52,6 @@
             }
         },
         methods: {
-            animateTab() {
-                const tabSlider = this.$refs.tabSlider;
-                if (tabSlider) {
-                    let activeTab = tabSlider.querySelector('.tab__pane.active');
-                    if (activeTab) {
-                        this.shift = activeTab.offsetLeft;
-                        this.height = `${activeTab.offsetHeight}px`;
-                    }
-                }
-            },
             switchTab(tabName) {
                 this.$emit('update:activeTab', tabName)
             },
@@ -89,23 +60,4 @@
 
 </script>
 
-<style lang="scss">
-    @import "../../../scss/core";
-
-    .tab__panes {
-        overflow: hidden;
-    }
-
-    .tab__slider {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-
-        will-change: transform, height;
-
-        &.transition {
-            transition: transform $transition-bezier, height $transition-bezier;
-        }
-    }
-
-</style>
+<style lang="scss" src="./Tab.scss"></style>

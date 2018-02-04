@@ -4,8 +4,8 @@
             v-for="control in computedControls"
             :class="{ 'tab__control': true, 'active': activeTab === control.component.name}">
 
-            <button class="tab__control-btn" @click="switchTab(control.component.name)">
-                {{ control.component.name }} {{ control.component.count ? control.component.count : '' }}
+            <button class="tab__control-btn" @click="switchTab(control.component.name,control.component.count)">
+                {{ control.component.label }} {{ control.component.count ? control.component.count : '' }}
             </button>
         </li>
     </ul>
@@ -28,7 +28,7 @@
             }
         },
         methods: {
-            switchTab(tabName) {
+            switchTab(tabName, count = null) {
                 this.$emit('activeTab', tabName)
             },
         },
@@ -41,35 +41,4 @@
 
 </script>
 
-<style lang="scss">
-    @import "../../../scss/core";
-
-    .tab__controls {
-        display: flex;
-        flex-wrap: wrap;
-
-    }
-
-    .tab__control-btn {
-        @extend %btn;
-        @extend %unselectable;
-    }
-
-    .tab__control {
-        list-style: none;
-
-        &.active button {
-            background-color: $green;
-            border-color: $green;
-            color: white;
-
-            cursor: default;
-
-            &:focus {
-                outline: $green;
-                border-color: $green;
-            }
-        }
-    }
-
-</style>
+<style lang="scss" src="./TabControls.scss"></style>

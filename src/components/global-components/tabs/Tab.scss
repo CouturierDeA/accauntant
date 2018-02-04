@@ -1,0 +1,17 @@
+@import "../../../scss/core";
+
+.tab__panes {
+  overflow: hidden;
+}
+
+.tab__slider {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+
+  will-change: transform, height;
+
+  &.transition {
+    transition: transform $transition-std, height $transition-std;
+  }
+}

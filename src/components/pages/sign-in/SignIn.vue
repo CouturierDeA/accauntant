@@ -1,8 +1,9 @@
 <template>
     <section class="container">
-        <h1 class="section__title">Sign In</h1>
+        <h1 class="section__title">{{ $t('sign_in.title') }}</h1>
+
         <div class="section__controlls form__controll">
-         
+
             <el-form>
                 <div class="form__input-wrap">
                     <el-input name="email"
@@ -12,6 +13,7 @@
                               placeholder="Email"
                               v-model="email">
                     </el-input>
+
                     <span class="form__field-message">{{ v_errors.first('email') }}</span>
                 </div>
                 <div class="form__input-wrap">
@@ -25,7 +27,8 @@
                     <span class="form__field-message">{{ v_errors.first('password') }}</span>
                 </div>
 
-                <el-button :disabled="v_errors.any()" class="form__submit" @click="onSubmit()" type="success">Submit
+                <el-button :disabled="v_errors.any()" class="form__submit" @click="onSubmit()" type="success">
+                    {{ $t('sign_in.login') }}
                 </el-button>
             </el-form>
 
@@ -46,6 +49,8 @@
                 email: 'test@gmail.com',
                 password: '123123'
             }
+        },
+        created() {
         },
         methods: {
             onSubmit() {

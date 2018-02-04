@@ -10,13 +10,17 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
+    "axios": "^0.17.1",
     "element-ui": "^2.0.11",
+    "gsap": "*",
+    "velocity": "^0.7.2",
     "vue": "^2.5.13",
+    "vue-i18n": "^7.4.2",
+    "vue-meta": "^1.4.2",
     "vue-router": "^2.2.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
-    "axios": "^0.17.1",
     "babel-core": "^6.22.1",
     "babel-eslint": "^7.1.1",
     "babel-loader": "^6.2.10",
@@ -63,6 +67,7 @@
     "shelljs": "^0.7.6",
     "url-loader": "^0.5.7",
     "vee-validate": "^2.0.3",
+    "velocity-animate": "^1.5.1",
     "vue-loader": "^10.3.0",
     "vue-style-loader": "^2.0.0",
     "vue-template-compiler": "^2.1.10",

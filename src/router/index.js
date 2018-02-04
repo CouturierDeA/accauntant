@@ -15,18 +15,18 @@ const routerConfig = {
     routes: [
         {
             path: '/',
-            name: 'Sign In',
+            name: 'sign_in',
             component: SignIn,
             meta: {requiresAuth: false}
         },
         {
             path: '/tasks',
-            name: 'Tasks',
+            name: 'tasks',
             component: Tasks,
         },
         {
             path: '/accountant-table',
-            name: 'Accountant table',
+            name: 'accountant-table',
             component: AccountantTable,
             meta: {requiresAuth: true}
         },
