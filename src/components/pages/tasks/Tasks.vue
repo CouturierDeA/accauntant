@@ -1,6 +1,6 @@
 <template>
     <section class="container tasks">
-        <h2 class="section__title">{{ $t('tasks.title') }}</h2>
+        <h1 class="section__title">{{ $t('tasks.title') }}</h1>
         <Todo/>
     </section>
 </template>
