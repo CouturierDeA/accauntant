@@ -8,7 +8,7 @@ class I18n {
 
     constructor(data = null) {
         this.defaultLocale = 'en';
-        this.locales = ['en', 'ru', 'uk'];
+        this.locales = ['en', 'ru', 'ua'];
         if (data) {
             for (let field in data) {
                 this[field] = data[field];
