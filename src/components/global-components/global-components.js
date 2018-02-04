@@ -11,7 +11,7 @@ import AnimatedList from '../../components/global-components/animated-list/Anima
 import VeeValidate from "vee-validate";
 import vValidateConfig from '../../vee-validate/config';
 
-const MyPlugin = {
+const GlobalComponents = {
     install(Vue) {
         Vue.use(VeeValidate, vValidateConfig);
         Vue.use(ElementUI);
@@ -31,4 +31,4 @@ const MyPlugin = {
 
 };
 
-export default MyPlugin;
+export default GlobalComponents;

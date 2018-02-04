@@ -14,6 +14,6 @@ VueInternalization.init([
 
 ]).then((i18n) => {
     params.i18n = i18n;
-    new Vue(params).$mount('#app');
+    new Vue(params);
 });
 

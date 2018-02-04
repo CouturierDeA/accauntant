@@ -22,7 +22,7 @@ $click-area : 8px;
 $grid-columns: 12;
 
 //transitions
-$transition-std: ease-out 0.3s;
+$transition-std: cubic-bezier(.21,.38,.77,.64) 0.3s;
 $transition-long: ease-out 0.6s;
 $transition: ease-out;
 $transition-bezier: cubic-bezier(.21,.38,.77,.64) 0.6s;
