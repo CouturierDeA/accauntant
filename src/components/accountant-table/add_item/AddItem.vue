@@ -52,7 +52,7 @@
             return {
                 new_item: new Item(),
                 visible: false,
-                cell_width: 195
+                cell_width: 183
             }
         },
         methods: {

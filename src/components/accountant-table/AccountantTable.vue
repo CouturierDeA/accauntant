@@ -1,50 +1,55 @@
 <template>
-    <div class="container form__controll">
-        <div class="table__wrap">
-            <AddItem/>
-            <el-table class="custom-table"
-                      :data="computedItems"
-                      width="100%">
-                <el-table-column
-                        prop="name"
-                        label="name"
-                        :width="cell_width">
-                    <el-input slot-scope="scope"
-                              v-model="scope.row.name"
-                              placeholder="Item name"/>
-                </el-table-column>
-                <el-table-column
-                        prop="number"
-                        label="number"
-                        :width="cell_width">
-                    <el-input-number slot-scope="scope"
-                                     v-model="scope.row.number"
-                                     controls-position="right"
-                                     :min="1" :max="100"/>
-                </el-table-column>
-                <el-table-column
-                        prop="price"
-                        label="price"
-                        :width="cell_width">
-                    <el-input-number slot-scope="scope"
-                                     v-model="scope.row.price"
-                                     controls-position="right"
-                                     :min="1" :max="100"/>
-                </el-table-column>
-                <el-table-column
-                        :width="cell_width"
-                        label="Operations">
-                    <el-row slot-scope="scope" type="flex" justify="end">
-                        <el-button type="danger"
-                                   @click="handleDelete(scope.$index, scope.row)">Delete
-                        </el-button>
-                    </el-row>
-                </el-table-column>
-            </el-table>
-            <AccountantTableTotal/>
+    <div class="container">
+        <h1 class="section__title">{{ $t('accountant-table.title') }}</h1>
+        <div class="form__controll">
 
+            <div class="table__wrap">
+                <AddItem/>
+                <el-table class="custom-table"
+                          :data="computedItems"
+                          width="100%">
+                    <el-table-column
+                            prop="name"
+                            label="name"
+                            :width="cell_width">
+                        <el-input slot-scope="scope"
+                                  v-model="scope.row.name"
+                                  placeholder="Item name"/>
+                    </el-table-column>
+                    <el-table-column
+                            prop="number"
+                            label="number"
+                            :width="cell_width">
+                        <el-input-number slot-scope="scope"
+                                         v-model="scope.row.number"
+                                         controls-position="right"
+                                         :min="1" :max="100"/>
+                    </el-table-column>
+                    <el-table-column
+                            prop="price"
+                            label="price"
+                            :width="cell_width">
+                        <el-input-number slot-scope="scope"
+                                         v-model="scope.row.price"
+                                         controls-position="right"
+                                         :min="1" :max="100"/>
+                    </el-table-column>
+                    <el-table-column
+                            :width="cell_width"
+                            label="Operations">
+                        <el-row slot-scope="scope" type="flex" justify="end">
+                            <el-button type="danger"
+                                       @click="handleDelete(scope.$index, scope.row)">Delete
+                            </el-button>
+                        </el-row>
+                    </el-table-column>
+                </el-table>
+                <AccountantTableTotal/>
+
+            </div>
         </div>
     </div>
+
 
 </template>
 
@@ -64,7 +69,7 @@
         data() {
             return {
                 items: dataBus.$data.items,
-                cell_width: 195,
+                cell_width: 183,
                 currentPage: 1
             }
         },
@@ -88,16 +93,16 @@
                 });
 
             },
-            handleCurrentChange($event){
+            handleCurrentChange($event) {
                 alert($event)
             },
-            handleSizeChange($event){
+            handleSizeChange($event) {
                 alert($event)
             }
 
         },
         computed: {
-            count(){
+            count() {
                 return dataBus.$data.total_count;
             },
             computedItems: {
