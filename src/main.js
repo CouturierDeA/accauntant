@@ -5,7 +5,7 @@ import VueInternalization from "./I18n";
 
 import store from './store';
 
-import {params} from './params';
+import {setup} from './app-setup';
 
 Vue.use(GlobalComponents);
 
@@ -13,7 +13,7 @@ VueInternalization.init([
     store.state.locale
 
 ]).then((i18n) => {
-    params.i18n = i18n;
-    new Vue(params);
+    setup.i18n = i18n;
+    new Vue(setup);
 });
 
