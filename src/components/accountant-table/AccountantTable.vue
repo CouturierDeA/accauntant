@@ -54,6 +54,9 @@
     import dataBus from '../../data/data.bus';
 
     export default {
+        metaInfo() {
+            return {title: this.$t('accountant-table.title')};
+        },
         components: {
             AccountantTableTotal,
             AddItem

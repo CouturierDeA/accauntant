@@ -9,16 +9,17 @@
                 >
                 <span class="task__image-message"
                       :class="{ 'mod--error': v_errors.has('image')}"
-                      v-if="v_errors.has('image')">
-                {{ v_errors.first('image') }}</span>
+                      v-if="v_errors.has('image')" v-text="v_errors.first('image') "></span>
             </div>
+            <div class="task_controll">
 
-            <el-checkbox class="task__complete"
-                         color="primary"
-                         v-model="taskComplete">
+                <el-checkbox class="task__complete"
+                             color="primary"
+                             v-model="taskComplete">
 
-            </el-checkbox>
-            <textarea v-model="taskName" @change="commitAllTasks" class="task__text"></textarea>
+                </el-checkbox>
+                <textarea v-model="taskName" @change="commitAllTasks" class="task__text"></textarea>
+            </div>
             <slot/>
         </div>
     </div>
@@ -39,10 +40,17 @@
                 this.$emit('commitAllTasks');
             },
             onFileChange(e) {
+
                 const files = e.target.files || e.dataTransfer.files;
-                if (!files.length)
-                    return;
-                this.createImage(files[0]);
+                this.$validator.validate('image').then(valid=>{
+
+                    if (!files.length || !valid) {
+                        return;
+                    }else{
+                        this.createImage(files[0]);
+                    }
+                });
+
             },
             createImage(file) {
                 const reader = new FileReader();

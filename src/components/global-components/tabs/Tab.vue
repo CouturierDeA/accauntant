@@ -3,9 +3,7 @@
         <h3 class="tab__title">{{ title }}</h3>
         <TabControls :controls="controls" :activeTab="activeTab" @activeTab="switchTab"/>
         <div class="tab__panes">
-            <div class="tab__slider" :class="{ 'transition' : transition }" ref="tabSlider" :style="sliderStyle">
-                <slot ref="tabSlides"></slot>
-            </div>
+            <slot></slot>
         </div>
     </div>
 </template>
@@ -41,14 +39,6 @@
                 transition: true,
                 shift: 0,
                 height: '',
-            }
-        },
-        computed: {
-            sliderStyle() {
-                return {
-                    'transform': `translateX(${-this.shift}px)`,
-                    'height': this.height
-                }
             }
         },
         methods: {

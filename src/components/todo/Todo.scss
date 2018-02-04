@@ -1,9 +1,5 @@
 @import "../../scss/core";
 
-.focus-test:focus {
-  color: $red
-}
-
 .todo {
   width: 100%;
   max-width: 600px;
@@ -11,12 +7,6 @@
 
   .title {
     margin-top: 0;
-  }
-
-  .tasks {
-    list-style: none;
-    padding: 0;
-    overflow-y: auto;
   }
 
   .submit-wrap {
@@ -27,12 +17,3 @@
 
   }
 }
-
-.todo {
-  margin-bottom: 100vh;
-}
-
-//
-//.flip-list-move {
-//  transition: transform 1s;
-//}

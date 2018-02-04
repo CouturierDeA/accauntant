@@ -1,8 +1,3 @@
-import {MutationTree} from 'vuex';
-
-import UserState from 'store/modules/user/state';
-
-
 export function add(state, user) {
     state.all.push(user);
 }

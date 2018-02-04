@@ -1,7 +1,6 @@
 <template>
     <section class="container tasks">
         <h2 class="section__title">{{ $t('tasks.title') }}</h2>
-        <AnimatedList></AnimatedList>
         <Todo/>
     </section>
 </template>
@@ -12,6 +11,9 @@
     export default {
         components: {
             Todo
+        },
+        metaInfo() {
+            return {title: this.$t('tasks.title')};
         }
     }
 

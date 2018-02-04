@@ -36,8 +36,10 @@ $complementary : #f5f7fa;
 $complementary-light : lighten($complementary,7);
 $complementary-dark : darken($complementary,7);
 
-$red : #d32f2f;
+$red : #f56c6c;
+$red-lighten : lighten($red,8);
 $green : #67c23a;
+$green-lighten : lighten($green,8);
 
 //fonts
 $font-base : 'Roboto', sans-serif;

@@ -14,10 +14,9 @@
 
                                  v-bind:task="task">
 
-                           <el-button class="task__delete"
-                                      type="danger"
+                           <button class="task__delete mod--danger"
                                       @click="deleteTask(task)">{{ $t('tasks.delete') }}
-                           </el-button>
+                           </button>
                        </TodoItem>
                    </AnimatedList>
 
@@ -33,10 +32,9 @@
                                  v-bind:key="`completed-${key}`"
                                  v-bind:data-index="key"
                                  v-bind:task="task">
-                           <el-button class="task__delete"
-                                      type="danger"
-                                      @click="deleteTask(task)">{{  $t('tasks.delete') }}
-                           </el-button>
+                           <button class="task__delete mod--danger"
+                                   @click="deleteTask(task)">{{ $t('tasks.delete') }}
+                           </button>
                        </TodoItem>
                    </AnimatedList>
                </TabPane>
@@ -51,10 +49,9 @@
                                  v-bind:key="`deleted-${key}`"
                                  v-bind:data-index="key"
                                  v-bind:task="task">
-                           <el-button class="task__delete"
-                                      type="success"
+                           <button class="task__delete mod--success"
                                       @click="restoreTask(task)">{{  $t('tasks.restore') }}
-                           </el-button>
+                           </button>
                        </TodoItem>
                    </AnimatedList>
                </TabPane>
@@ -113,6 +110,7 @@
                 if (this.newTaskName.length) {
                     this.tasks.push({name: this.newTaskName, complete: false, image: ''});
                     this.clearNewTaskName();
+                    this.commitAllTasks();
                 }
             },
             deleteTask(task) {

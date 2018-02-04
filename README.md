@@ -1,18 +1,4 @@
-# Vue Accauntant table
-
-Create an accauntant-table using vue js.
-
-- Accauntant table must have at list 3 redactable columns, 
-and a row with the total items quantity and the total items price.
-
-- Allsow the user can add or delete items from the accauntant table.
-
-- The total quantity and price should change automatically each time fields were changed,
-or items was added or deleted.
-
-- No need to validate field values.
-
-- No need to save data locally.
+# Vue Test App example
 
 # Running this tutorial
 -  Clone the repo:

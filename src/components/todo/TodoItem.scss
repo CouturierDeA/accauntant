@@ -1,22 +1,34 @@
 @import "../../scss/core";
 
-.task__wrap{
+.task__wrap {
   display: flex;
-  align-items: flex-start;
-  box-sizing: border-box;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+
   padding: $gw 0;
+
+  @include media('<tablet') {
+    border: 1px solid $complementary-dark;
+    border-radius: $br;
+  }
+
+  @include media('>=tablet') {
+    flex-direction: row;
+  }
+}
+
+//.tasks/
+.tasks {
+  list-style: none;
+  padding: 0 0 $gw;
+  overflow-y: auto;
+
 }
 
 //.task/
 .task {
-  //.task + .task
-  & + .task {
-    //margin-top: $gw/2;
-  }
 
-  .el-checkbox__inner {
-    margin-top: 6px;
-  }
 }
 
 .task__text {
@@ -29,16 +41,32 @@
 
 }
 
+.task_controll {
+  display: flex;
+  align-items: flex-start;
+  padding: $gw 0;
+
+  @include media('>=tablet') {
+    padding: 0;
+  }
+}
+
 .complete .task__text {
   text-decoration: line-through;
 }
 
 .task__complete {
   margin-right: $gw/2;
+  margin-top: 3px;
 }
 
 .task__delete {
-  margin-left: auto;
+  @extend %btn;
+
+  @include media('>=tablet') {
+    margin-left: auto;
+  }
+
 }
 
 //.task__image/
@@ -50,15 +78,20 @@
   display: flex;
   flex-direction: column;
 
-  width: 82px;
-  height: 82px;
-
-  margin-right: $gw;
+  width: 150px;
+  height: 150px;
 
   background-color: $complementary;
 
   border-color: 1px solid $complementary-dark;
   border-radius: $br;
+
+  @include media('>=tablet') {
+    width: 82px;
+    height: 82px;
+
+    margin-right: $gw;
+  }
 
   img {
     max-width: 100%;
@@ -81,7 +114,7 @@
 
 .task__image-message {
   position: absolute;
-  bottom: 0;
+  bottom: -43px;
   left: 0;
   font-size: 12px;
 

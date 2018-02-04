@@ -3,10 +3,18 @@
 
 html, body {
   height: 100%;
+
+  color: $text-primary;
+
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-kerning: normal;
 }
-*{
+
+* {
   box-sizing: border-box;
 }
 
@@ -18,14 +26,7 @@ html {
 
 #app {
   @extend %scrollbar;
-
   padding-top: 100px;
-
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-
-  font-kerning: normal;
 
 }
 

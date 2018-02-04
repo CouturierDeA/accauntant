@@ -1,14 +1,15 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import VueMeta from 'vue-meta';
 
-import dataBus from '../data/data.bus';
 import store from '../store';
 
-import * as AccountantTable from 'components/accountant-table/AccountantTable.vue';
-import * as Tasks from 'components/pages/tasks/Tasks.vue';
-import * as SignIn from 'components/pages/sign-in/SignIn.vue';
+import  AccountantTable from 'components/accountant-table/AccountantTable.vue';
+import Tasks from 'components/pages/tasks/Tasks.vue';
+import SignIn from 'components/pages/sign-in/SignIn.vue';
 
 Vue.use(Router);
+Vue.use(VueMeta);
 
 const routerConfig = {
     mode: 'history',
@@ -36,11 +37,11 @@ const routerConfig = {
 const router = new Router(routerConfig);
 
 function afterEach(to, from) {
-    dataBus.loading = false;
+    store.state.loading = false;
 }
 
 function onReady() {
-    dataBus.loading = false;
+    store.state.loading = false;
 }
 
 function beforeEach(to, from, next) {

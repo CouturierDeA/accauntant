@@ -6,10 +6,19 @@ import store from 'store';
 
 class I18n {
 
-    constructor() {
+    constructor(data = null) {
         this.defaultLocale = 'en';
         this.locales = ['en', 'ru', 'uk'];
+        if (data) {
+            for (let field in data) {
+                this[field] = data[field];
+                if (this[field].type) {
+                    this[field].type = data[field].type;
+                }
+            }
+        }
     }
+
     i18n;
 
     init(priority) {

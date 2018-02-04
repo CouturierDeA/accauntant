@@ -41,6 +41,9 @@
 <script>
 
     export default {
+        metaInfo() {
+            return {title: 'Vue app example'};
+        },
         data() {
             return {
                 loginError: false,
@@ -61,7 +64,7 @@
                     if (valid) {
                         this.$store.dispatch('user/login', payload)
                             .then(response => {
-                                this.$router.push('/accountant-table');
+                                this.$router.push('/tasks');
                                 this.loginError = 'No such user or password is invalid';
 
                             }).catch(error => {
@@ -72,6 +75,7 @@
                                     type: 'warning',
                                     message: 'Login canceled'
                                 });
+
                             } else {
                                 this.loginError = 'Something went wrong';
                             }

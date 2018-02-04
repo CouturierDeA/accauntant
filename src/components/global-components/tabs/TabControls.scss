@@ -3,12 +3,22 @@
 .tab__controls {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
+
+  @include media('>=tablet') {
+    flex-direction: row;
+  }
 
 }
 
 .tab__control-btn {
   @extend %btn;
   @extend %unselectable;
+  width: 100%;
+
+  @include media('>=tablet') {
+    width: auto;
+  }
 }
 
 .tab__control {

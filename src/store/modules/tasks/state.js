@@ -1,6 +1,6 @@
-import defaultTasks from '../../../data/data.tasks.json';
+import defaultTasks from '../../../../.data/data.tasks.json';
 
-// localStorage.clear();
+localStorage.clear();
 
 const localStorageHas = ($item)=> {
 
