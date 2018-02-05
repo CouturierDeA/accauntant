@@ -12,13 +12,8 @@ function login(email, password) {
         password,
 
     }).then((response) => {
-        const user = response.data;
-        console.log('user',user);
 
-        if (!user.length === 0) {
-            return Promise.reject(1);
-        }
-        return user;
+        return response.data;
 
     }).catch(error => {
 

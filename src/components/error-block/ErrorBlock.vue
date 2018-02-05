@@ -11,12 +11,9 @@
         },
         methods: {
             swithError(error) {
-                console.warn(error);
                 switch (error) {
                     case 1:
                         return this.$t('errors.access_denied').toString();
-
-
                 }
                 return this.$t('errors.common').toString()
             }
