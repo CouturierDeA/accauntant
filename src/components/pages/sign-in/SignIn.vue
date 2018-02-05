@@ -32,7 +32,7 @@
                 </el-button>
             </el-form>
 
-            <ErrorBlock v-bind:error="loginError"/>
+            <ErrorBlock v-bind:error="computedErrorMsg"/>
 
         </div>
     </section>
@@ -46,18 +46,33 @@
         },
         data() {
             return {
-                loginError: false,
+                errorMsg: false,
                 visible: false,
                 visible2: false,
                 email: 'test@gmail.com',
                 password: '123123'
             }
         },
-        created() {
+        computed: {
+            computedErrorMsg() {
+                let errorMsg = false;
+
+                if (this.errorMsg) {
+                    errorMsg = this.$t('errors.common');
+
+                    switch (this.errorMsg) {
+                        case 1:
+                            errorMsg = this.$t('errors.access_denied').toString();
+                            break;
+                    }
+
+                }
+                return errorMsg;
+            }
         },
         methods: {
             onSubmit() {
-                this.loginError = '';
+                this.errorMsg = '';
                 const payload = {email: this.email, password: this.password};
 
                 this.$validator.validateAll().then((valid) => {
@@ -65,20 +80,10 @@
                         this.$store.dispatch('user/login', payload)
                             .then(response => {
                                 this.$router.push('/tasks');
-                                this.loginError = 'No such user or password is invalid';
 
                             }).catch(error => {
 
-                            if (error == 1) {
-                                this.loginError = 'No such user or password is invalid';
-                                this.$message({
-                                    type: 'warning',
-                                    message: 'Login canceled'
-                                });
-
-                            } else {
-                                this.loginError = 'Something went wrong';
-                            }
+                            this.errorMsg = error;
 
                         })
                     } else {

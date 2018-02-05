@@ -32,7 +32,6 @@ module.exports = function (app) {
     }
 
     app.get('/users', usersController);
-    app.post('/users', usersController);
 
     app.post('/login', loginController);
     app.post('/users', usersController);
@@ -69,7 +68,7 @@ module.exports = function (app) {
 
             errors = 'No such User or Pass is invalid';
             console.log(errors);
-            status = 401;
+            status = 304;
         }
 
         res.status(status).send(logged);
