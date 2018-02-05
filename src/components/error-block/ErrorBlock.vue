@@ -6,8 +6,7 @@
 
     export default {
         props: {
-            error: '',
-            errorText: false
+            error: false,
         },
         methods: {
             swithError(error) {
@@ -20,8 +19,17 @@
         },
         computed: {
             computedErrorMsg() {
-                return (this.errorText) ? this.errorText : (this.error ? this.swithError(this.error) : false);
+                return (this.error ? this.swithError(this.error) : false);
             }
         },
     }
 </script>
+
+<style lang="scss" scoped>
+    @import "../../scss/core";
+
+    .error {
+        color: $red;
+    }
+
+</style>
