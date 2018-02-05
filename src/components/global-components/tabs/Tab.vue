@@ -18,31 +18,25 @@
         },
         props: {
             title: {
-                default:
-                    () => {
-                        return ''
-                    }
+                default: () => {
+                    return ''
+                }
             },
             activeTab: {
-                default:
-                    () => {
-                        return false
-                    }
+                default: () => {
+                    return false
+                }
             },
             animateOnChange: {
-                default:
-                    () => {
-                        return false
-                    }
+                default: () => {
+                    return false
+                }
             },
         },
         data() {
             return {
                 name: 'tab',
                 controls: [],
-                transition: true,
-                shift: 0,
-                height: '',
             }
         },
         methods: {
@@ -51,6 +45,7 @@
             },
         }
     }
+
 </script>
 
 <style lang="scss" src="./Tab.scss"></style>
