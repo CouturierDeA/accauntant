@@ -9,22 +9,17 @@
             error: '',
             errorText: false
         },
+        methods: {
+            swithError(error) {
+                switch (error) {
+                    case 1:
+                        return this.$t('errors.access_denied').toString();
+                }
+            }
+        },
         computed: {
             computedErrorMsg() {
-                let errorMsg = false;
-                if (!this.errorText) {
-                    if (this.error) {
-                        errorMsg = this.$t('errors.common');
-
-                        switch (this.error) {
-                            case 1:
-                                return errorMsg = this.$t('errors.access_denied').toString();
-                        }
-                    }
-                } else {
-                    errorMsg = this.errorText
-                }
-                return errorMsg;
+                return (this.errorText) ? this.errorText : (this.error ? this.swithError(this.error) : false);
             }
         },
     }
