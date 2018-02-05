@@ -55,19 +55,7 @@
         },
         computed: {
             computedErrorMsg() {
-                let errorMsg = false;
-
-                if (this.errorMsg) {
-                    errorMsg = this.$t('errors.common');
-
-                    switch (this.errorMsg) {
-                        case 1:
-                            errorMsg = this.$t('errors.access_denied').toString();
-                            break;
-                    }
-
-                }
-                return errorMsg;
+                return this.errorMsg;
             }
         },
         methods: {
