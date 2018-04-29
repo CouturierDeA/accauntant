@@ -4,9 +4,11 @@ import VueMeta from 'vue-meta';
 
 import store from '../store';
 
-import  AccountantTable from 'components/accountant-table/AccountantTable.vue';
+import AccountantTable from 'components/accountant-table/AccountantTable.vue';
 import Tasks from 'components/pages/tasks/Tasks.vue';
 import SignIn from 'components/pages/sign-in/SignIn.vue';
+import testPage from 'components/pages/test-page/TestPage.vue';
+// import ApplicantSettings from 'ApplicantProfile/components/applicant-settings';
 
 Vue.use(Router);
 Vue.use(VueMeta);
@@ -29,8 +31,18 @@ const routerConfig = {
             path: '/accountant-table',
             name: 'accountant-table',
             component: AccountantTable,
-            meta: {requiresAuth: true}
+            meta: {requiresAuth: false}
         },
+        {
+            path: '/test-page',
+            name: 'Test Page',
+            component: testPage,
+            meta: {requiresAuth: false}
+        },
+        // {   path: '/App/ApplicantProfile/Vue/ApplicantSettings',
+        //     component: ApplicantSettings,
+        //     display: 'My Settings'},
+
     ],
 };
 

@@ -54,7 +54,6 @@
 
     .language-switcher {
         display: flex;
-        flex-direction: row;
         flex-wrap: wrap;
         list-style: none;
 
@@ -62,12 +61,13 @@
 
     .language-switcher__li {
         list-style: none;
+        display: inline;
 
     }
 
     .language-switcher__link {
         @extend %unselectable;
-        display: block;
+        /*display: block;*/
         padding: $gw/2;
         text-decoration: none;
         transition: color $transition;

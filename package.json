@@ -11,15 +11,20 @@
   },
   "dependencies": {
     "axios": "^0.17.1",
-    "element-ui": "^2.0.11",
-    "gsap": "*",
+    "bootstrap": "^4.0.0",
+    "element-theme-chalk": "^2.2.1",
+    "element-ui": "^2.2.1",
+    "gsap": "^1.20.4",
+    "jquery": "^3.3.1",
     "normalize.scss": "^0.1.0",
+    "signature_pad": "^2.3.2",
+    "vee-validate": "*",
     "vue": "^2.5.13",
     "vue-i18n": "^7.4.2",
-    "vue-meta": "^1.4.2",
+    "vue-meta": "^1.4.3",
     "vue-router": "^2.2.0",
-    "vuex": "^3.0.1",
-    "vee-validate": "^2.0.3"
+    "vue-the-mask": "^0.11.1",
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
@@ -70,9 +75,9 @@
     "vue-style-loader": "^2.0.0",
     "vue-template-compiler": "^2.1.10",
     "webpack": "^2.2.1",
-    "webpack-bundle-analyzer": "^2.2.1",
+    "webpack-bundle-analyzer": "^2.11.1",
     "webpack-dev-middleware": "^1.10.0",
-    "webpack-hot-middleware": "^2.16.1",
+    "webpack-hot-middleware": "^2.21.2",
     "webpack-merge": "^2.6.1"
   },
   "engines": {

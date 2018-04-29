@@ -29,7 +29,7 @@ $transition-bezier: cubic-bezier(.21,.38,.77,.64) 0.6s;
 
 //colors
 $default : #fff;
-$secondary : #41b883;
+$secondary : teal;
 $secondary-lighten : lighten($secondary, 7);
 $text-primary : #606266;
 $complementary : #f5f7fa;
@@ -38,7 +38,7 @@ $complementary-dark : darken($complementary,7);
 
 $red : #f56c6c;
 $red-lighten : lighten($red,8);
-$green : #67c23a;
+$green : teal;
 $green-lighten : lighten($green,8);
 
 //fonts

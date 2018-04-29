@@ -4,7 +4,7 @@
             <div class="task__image" :style="`background-image: url(${taskImage})`">
                 <input class="task__image-input"
                        type="file" name="image"
-                       v-validate.reject="'image|size:400'"
+                       v-validate.reject="'image|size:40'"
                        @change="onFileChange"
                 >
                 <span class="task__image-message"
@@ -37,7 +37,8 @@
         },
         methods: {
             commitAllTasks() {
-                this.$emit('commitAllTasks');
+                // this.$emit('commitAllTasks');
+                this.$root.$emit('commitAllTasks');
             },
             onFileChange(e) {
 
@@ -45,7 +46,7 @@
                 this.$validator.validate('image').then(valid=>{
 
                     if (!files.length || !valid) {
-                        return;
+                        return false;
                     }else{
                         this.createImage(files[0]);
                     }

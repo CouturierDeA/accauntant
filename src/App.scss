@@ -2,6 +2,9 @@
 "scss/core",
 "~normalize.scss/normalize.scss";
 
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+@import '../node_modules/bootstrap/scss/bootstrap-grid.scss';
+@import '../node_modules/bootstrap/scss/bootstrap-reboot.scss';
 
 html, body {
   height: 100%;

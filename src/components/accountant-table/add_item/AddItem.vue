@@ -34,7 +34,7 @@
                     :width="cell_width"
                     label="Operations">
                 <el-row slot-scope="scope" type="flex" justify="end">
-                    <el-button type="success" @click="addItem()">Add</el-button>
+                    <el-button type="primary" @click="addItem()">Add</el-button>
                 </el-row>
             </el-table-column>
         </el-table>

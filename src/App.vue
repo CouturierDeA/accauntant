@@ -15,6 +15,7 @@
             Header,
         }
     }
+
 </script>
 
 <style src="App.scss" lang="scss"></style>

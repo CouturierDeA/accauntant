@@ -14,6 +14,7 @@
                 </div>
             </div>
         </div>
+
     </transition>
 </template>
 
@@ -40,7 +41,23 @@
                 default: () => {
                     return 'Popup message'
                 }
-            }
+            },
+
+
+            customer: {
+                id: null,
+                firstName: 'FirstName',
+                middleName: 'MiddleName',
+                lastName: 'LastName',
+                companyName: 'Companyname',
+                phone: '1111111111',
+                email: 'email@gmail.com',
+                addressLine1: 'address line 1',
+                addressLine2: 'address line 2',
+                city: 'City',
+                state: 'State',
+                zip: '1232231122'
+            },
 
         },
         mounted() {

@@ -1,5 +1,6 @@
 <template>
     <div class="container">
+        <googleMap></googleMap>
         <h1 class="section__title">{{ $t('accountant-table.title') }}</h1>
         <div class="form__controll">
 
@@ -46,8 +47,10 @@
                 </el-table>
                 <AccountantTableTotal/>
 
+
             </div>
         </div>
+
     </div>
 
 
@@ -57,6 +60,7 @@
     import AccountantTableTotal from './accountant_table_total/AccountantTableTotal.vue';
     import AddItem from './add_item/AddItem.vue';
     import dataBus from '../../data/data.bus';
+    import googleMap from '../../components/google-map/google-map';
 
     export default {
         metaInfo() {
@@ -64,13 +68,17 @@
         },
         components: {
             AccountantTableTotal,
+            googleMap,
             AddItem
         },
         data() {
             return {
                 items: dataBus.$data.items,
                 cell_width: 183,
-                currentPage: 1
+                pageItems: [],
+                skipCount: 0,
+                pageSize: 2,
+                totalCount: -1
             }
         },
         methods: {
@@ -93,13 +101,6 @@
                 });
 
             },
-            handleCurrentChange($event) {
-                alert($event)
-            },
-            handleSizeChange($event) {
-                alert($event)
-            }
-
         },
         computed: {
             count() {
@@ -109,16 +110,24 @@
                 get: function () {
                     let total_count = 0;
                     let total_price = 0;
+                    this.pageItems = [];
 
                     for (let i = 0; i < this.items.length; i++) {
                         let item = this.items[i];
+
+                        if (i >= this.skipCount && i < (this.skipCount + this.pageSize)) {
+                            this.pageItems.push(item);
+                        }
+
+
                         total_count += parseInt(item.number);
                         total_price += parseInt(item.number) * parseInt(item.price);
                     }
+
                     dataBus.$data.total_count = total_count;
                     dataBus.$data.total_price = total_price;
 
-                    return this.items;
+                    return this.pageItems;
                 },
             }
         }
@@ -127,4 +136,5 @@
 </script>
 
 <style src="./AccountantTable.scss" lang="scss"></style>
+
 

@@ -1,12 +1,38 @@
 {
   "validation": {
     "messages": {
-      "required": "Обязательное для заполнения",
-      "email": "Некорректный email",
-      "confirmed": "Пароли не совпадают",
-      "ext": "Неверное расширение файла",
-      "mimes": "Неверный тип файла",
-      "min": "Должно быть как минимум {value} символов"
+      "after": "Поле {fieldName} должно быть после {0}.{:} Поле {fieldName} должно быть позднее или равно {0}.",
+      "alpha_dash": "Поле {fieldName} должно содержать alpha-numeric characters, пробелы и подчеркивания.",
+      "alpha_num": "Поле {fieldName} должно содержать alpha-numeric значения.",
+      "alpha_spaces": "The {fieldName} field may only contain alphabetic characters as well as spaces.",
+      "alpha": "The {fieldName} field may only contain alphabetic characters.",
+      "before": "The {fieldName} must be before or equal to {0}.",
+      "in": "The {fieldName} field must be a valid value.",
+      "between": "Поле {fieldName} должно быть между {0} и {1}.",
+      "confirmed": "The {fieldName} confirmation does not match.",
+      "credit_card": "The {fieldName} field is invalid.",
+      "date_between": "Поле {fieldName} должно быть между {0} и {1}.",
+      "date_format": "The {fieldName} must be in the format {0}.",
+      "decimal": "The {fieldName} field must be numeric and may contain {0} decimal points.",
+      "digits": "The {fieldName} field must be numeric and exactly contain {0} digits.",
+      "dimensions": "The {fieldName} field must be {0} pixels by {1} pixels.",
+      "email": "The {fieldName} field must be a valid email.",
+      "ext": "The {fieldName} field must be a valid file.",
+      "image": "The {fieldName} field must be an image.",
+      "integer": "The {fieldName} field must be an integer.",
+      "ip": "The {fieldName} field must be a valid ip address.",
+      "length": "The {fieldName}  has wrong length.",
+      "min_value": "The {fieldName} field must be {0} or more.",
+      "max_value": "The {fieldName} field must be {0} or less.  ",
+      "mimes": "The {fieldName} field must have a valid file type.",
+      "max": "The {fieldName} field may not be greater than {0} characters.",
+      "min": "The {fieldName} field must be at least {0} characters",
+      "not_in": "The {fieldName} field must be a valid value.",
+      "numeric": "The {fieldName} field may only contain numeric characters.",
+      "regex": "The {fieldName} field format is invalid.",
+      "required": "The {fieldName} field is required.",
+      "size": "The {fieldName} size must be less than {0} KB",
+      "url": "The {fieldName} field is not a valid URL."
     },
     "attributes": {
       "name": "Имя",
@@ -19,6 +45,9 @@
     "access_denied": "Неправильный логин/пароль",
     "email_already_taken": "Введенный email уже занят, пожалуйста выберите другой",
     "common": "Что-то пошло не так..."
+  },
+  "test_page": {
+    "title": "Тестовая"
   },
   "sign_in": {
     "title": "Авторизация",
