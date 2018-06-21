@@ -76,10 +76,10 @@
             <el-table-column
               fixed="right"
               :min-width="cell_width"
-              label="Operations">
+              :label="$t('general.operations')">
               <el-row slot-scope="scope" type="flex" justify="end">
                 <el-button type="danger"
-                           @click="handleDelete(scope.$index, scope.row)">Delete
+                           @click="handleDelete(scope.$index, scope.row)">{{ $t('general.delete') }}
                 </el-button>
               </el-row>
             </el-table-column>

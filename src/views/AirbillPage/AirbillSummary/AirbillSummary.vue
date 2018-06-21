@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <b class="m-b-gw">Summary:</b>
+    <b class="m-b-gw">{{ $t('general.summary') }} :</b>
     <dl v-for="(price,key) in computedPrices" :key="key" class="d-flex flex-wrap row-half d-inline-flex xs-24 m-b-gw">
       <dt class="d-inline-flex cxs-12"><b>{{ key }} ($/item)</b></dt>
       <dd class="d-inline-flex cxs-12">{{ price.total_price  }}$ ({{ price.total_items }} items)</dd>

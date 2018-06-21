@@ -68,7 +68,7 @@
         if (!this.hasName) {
           this.$prompt('Enter the item name.', this.$t('general.tip'), {
             confirmButtonText: this.$t('general.ok'),
-            cancelButtonText: 'Cancel',
+            cancelButtonText: this.$t('general.cancel'),
 
             inputValidator: (value) => {
               return (VeeValidate.Rules.required(value) ?
