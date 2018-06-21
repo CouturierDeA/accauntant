@@ -15,7 +15,7 @@
         </slot>
       </AirbillAddItem>
       <div class="table__wrap d-flex flex-wrap">
-        <Pagination class="xs-24 d-inline-flex m-t-15"
+        <Pagination class="xs-24 d-inline-flex m-t-gw m-b-gw"
                     sortBy="name"
                     v-bind:items.sync="computedItems"
                     v-bind:sortedItems.sync="computedSortedItems"/>
