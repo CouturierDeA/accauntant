@@ -1,0 +1,93 @@
+{
+  "SiteTitle": "Airbill",
+  "validation": {
+    "messages": {
+      "after": "The {fieldName} must be after {0}.",
+      "after_inclusion": "The {fieldName} must be after {0} or equal to {1}.",
+      "alpha_dash": "The {fieldName} field may contain alpha-numeric characters as well as dashes and underscores.",
+      "alpha_num": "The {fieldName} field may only contain alpha-numeric characters.",
+      "alpha_spaces": "The {fieldName} field may only contain alphabetic characters as well as spaces.",
+      "alpha": "The {fieldName} field may only contain alphabetic characters.",
+      "before": "The {fieldName} must be before or equal to {0}.",
+      "in": "The {fieldName} field must be a valid value.",
+      "between": "The {fieldName} field must be between {0} and {1}.",
+      "confirmed": "The {fieldName} confirmation does not match.",
+      "credit_card": "The {fieldName} field is invalid.",
+      "date_between": "The {fieldName} must be between {0} and {1}.",
+      "date_format": "The {fieldName} must be in the format {0}.",
+      "decimal": "The {fieldName} field must be numeric and may contain {0} decimal points.",
+      "digits": "The {fieldName} field must be numeric and exactly contain {0} digits.",
+      "dimensions": "The {fieldName} field must be {0} pixels by {1} pixels.",
+      "email": "The {fieldName} field must be a valid email.",
+      "ext": "The {fieldName} field must be a valid file.",
+      "image": "The {fieldName} field must be an image.",
+      "integer": "The {fieldName} field must be an integer.",
+      "ip": "The {fieldName} field must be a valid ip address.",
+      "length": "The {fieldName}  has wrong length.",
+      "min_value": "The {fieldName} field must be {0} or more.",
+      "max_value": "The {fieldName} field must be {0} or less.  ",
+      "mimes": "The {fieldName} field must have a valid file type.",
+      "max": "The {fieldName} field may not be greater than {0} characters.",
+      "min": "The {fieldName} field must be at least {0} characters",
+      "not_in": "The {fieldName} field must be a valid value.",
+      "numeric": "The {fieldName} field may only contain numeric characters.",
+      "regex": "The {fieldName} field format is invalid.",
+      "required": "The {fieldName} field is required.",
+      "size": "The {fieldName} size must be less than {0} KB",
+      "url": "The {fieldName} field is not a valid URL."
+    },
+    "attributes": {
+      "name": "Name",
+      "email": "Email",
+      "password": "Password",
+      "password_confirm": "Confirm password"
+    }
+  },
+  "errors": {
+    "access_denied": "Access denied",
+    "common": "Something went wrong...",
+    "correct_errors_before_submit": "Correct errors before submit"
+  },
+  "sign_in": {
+    "title": "Sign In",
+    "login": "Log In",
+    "do_not_have_account": "Don't have an account?",
+    "forgot_password": "Forgot password?"
+  },
+  "airbill": {
+    "title": "Airbill",
+    "list_title": "Task List",
+    "add_label": "Add Task",
+    "add": "Add",
+    "task": "task",
+    "bug": "bug",
+    "delete": "Delete",
+    "pending": "Pending",
+    "completed": "Completed",
+    "restore": "Restore",
+    "deleted": "Deleted"
+  },
+  "general": {
+    "title": "Vue Test App",
+    "add_item": "Add item",
+    "add": "Add",
+    "type": "Type",
+    "tip": "Tip",
+    "name": "name",
+    "logout": "Logout",
+    "total": "Total",
+    "search": "Do search",
+    "submit": "Submit",
+    "summary": "Summary",
+    "clear": "Clear",
+    "checked": "Checked",
+    "number": "Number",
+    "price": "Price",
+    "count": "Count",
+    "item_name": "Item name",
+    "operations": "operations",
+    "not_selected": "not selected",
+    "delete_canceled": "Delete canceled",
+    "search_items": "Search items"
+  }
+}

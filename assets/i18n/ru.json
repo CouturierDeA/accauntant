@@ -1,0 +1,93 @@
+{
+  "SiteTitle": "Ru:Airbill",
+  "validation": {
+    "messages": {
+      "after": "Ru:The {fieldName} must be after {0}.",
+      "after_inclusion": "Ru:The {fieldName} must be after {0} or equal to {1}.",
+      "alpha_dash": "Ru:The {fieldName} field may contain alpha-numeric characters as well as dashes and underscores.",
+      "alpha_num": "Ru:The {fieldName} field may only contain alpha-numeric characters.",
+      "alpha_spaces": "Ru:The {fieldName} field may only contain alphabetic characters as well as spaces.",
+      "alpha": "Ru:The {fieldName} field may only contain alphabetic characters.",
+      "before": "Ru:The {fieldName} must be before or equal to {0}.",
+      "in": "Ru:The {fieldName} field must be a valid value.",
+      "between": "Ru:The {fieldName} field must be between {0} and {1}.",
+      "confirmed": "Ru:The {fieldName} confirmation does not match.",
+      "credit_card": "Ru:The {fieldName} field is invalid.",
+      "date_between": "Ru:The {fieldName} must be between {0} and {1}.",
+      "date_format": "Ru:The {fieldName} must be in the format {0}.",
+      "decimal": "Ru:The {fieldName} field must be numeric and may contain {0} decimal points.",
+      "digits": "Ru:The {fieldName} field must be numeric and exactly contain {0} digits.",
+      "dimensions": "Ru:The {fieldName} field must be {0} pixels by {1} pixels.",
+      "email": "Ru:The {fieldName} field must be a valid email.",
+      "ext": "Ru:The {fieldName} field must be a valid file.",
+      "image": "Ru:The {fieldName} field must be an image.",
+      "integer": "Ru:The {fieldName} field must be an integer.",
+      "ip": "Ru:The {fieldName} field must be a valid ip address.",
+      "length": "Ru:The {fieldName}  has wrong length.",
+      "min_value": "Ru:The {fieldName} field must be {0} or more.",
+      "max_value": "Ru:The {fieldName} field must be {0} or less.  ",
+      "mimes": "Ru:The {fieldName} field must have a valid file type.",
+      "max": "Ru:The {fieldName} field may not be greater than {0} characters.",
+      "min": "Ru:The {fieldName} field must be at least {0} characters",
+      "not_in": "Ru:The {fieldName} field must be a valid value.",
+      "numeric": "Ru:The {fieldName} field may only contain numeric characters.",
+      "regex": "Ru:The {fieldName} field format is invalid.",
+      "required": "Ru:The {fieldName} field is required.",
+      "size": "Ru:The {fieldName} size must be less than {0} KB",
+      "url": "Ru:The {fieldName} field is not a valid URL."
+    },
+    "attributes": {
+      "name": "Ru:Name",
+      "email": "Ru:Email",
+      "password": "Ru:Password",
+      "password_confirm": "Ru:Confirm password"
+    }
+  },
+  "errors": {
+    "access_denied": "Ru:Access denied",
+    "common": "Ru:Something went wrong...",
+    "correct_errors_before_submit": "Ru:Correct errors before submit"
+  },
+  "sign_in": {
+    "title": "Ru:Sign In",
+    "login": "Ru:Log In",
+    "do_not_have_account": "Ru:Don't have an account?",
+    "forgot_password": "Ru:Forgot password?"
+  },
+  "airbill": {
+    "title": "Ru:Airbill",
+    "list_title": "Ru:Task List",
+    "add_label": "Ru:Add Task",
+    "add": "Ru:Add",
+    "task": "Ru:task",
+    "bug": "Ru:bug",
+    "delete": "Ru:Delete",
+    "pending": "Ru:Pending",
+    "completed": "Ru:Completed",
+    "restore": "Ru:Restore",
+    "deleted": "Ru:Deleted"
+  },
+  "general": {
+    "title": "Ru:Vue Test App",
+    "add_item": "Ru:Add item",
+    "add": "Ru:Add",
+    "type": "Ru:Type",
+    "tip": "Ru:Tip",
+    "name": "Ru:name",
+    "logout": "Ru:Logout",
+    "total": "Ru:Total",
+    "search": "Ru:Do search",
+    "submit": "Ru:Submit",
+    "summary": "Ru:Summary",
+    "clear": "Ru:Clear",
+    "checked": "Ru:Checked",
+    "number": "Ru:Number",
+    "price": "Ru:Price",
+    "count": "Ru:Count",
+    "item_name": "Ru:Item name",
+    "operations": "Ru:operations",
+    "not_selected": "Ru:not selected",
+    "delete_canceled": "Ru:Delete canceled",
+    "search_items": "Ru:Search items"
+  }
+}

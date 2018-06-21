@@ -1,0 +1,238 @@
+@import "scss/core",
+"~normalize.scss/normalize.scss";
+//@import '../node_modules/bootstrap/scss/bootstrap.scss';
+//@import '../node_modules/bootstrap/scss/bootstrap-grid.scss';
+//@import '../node_modules/bootstrap/scss/bootstrap-reboot.scss';
+
+@include make-grid(24);
+
+.row {
+  @include calc-plus(100%, $gw*2);
+  margin-left: -$gw;
+  margin-right: -$gw;
+}
+
+.row-half {
+  @include calc-plus(100%, $gw);
+  margin-left: -$gw/2;
+  margin-right: -$gw/2;
+}
+
+.row-t-gw {
+  @include media(map_get($breakpoints, sm)) {
+    @include calc-plus(100%, $gw);
+    margin-left: -$gw/2;
+    margin-right: -$gw/2;
+  }
+}
+
+body.el-popup-parent--hidden {
+  padding-right: 0 !important;
+}
+
+html, body {
+  //height: 100%;
+  min-height: 100%;
+  color: $text-primary;
+
+  -webkit-overflow-scrolling: touch;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-kerning: normal;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  //@extend %scrollbar;
+  font-size: 100%;
+  //overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+#app {
+  //@extend %scrollbar;
+  padding-top: 41px;
+
+}
+
+ul {
+  padding-left: 0;
+}
+
+.container {
+  @include grid-width();
+  overflow-x: visible !important;
+}
+.container--narrow{
+  @include grid-width($grid-width-base/3);
+  overflow-x: visible !important;
+}
+
+
+.p-gw-half {
+  padding: $gw/2;
+}
+
+.p-gw {
+  padding: $gw;
+}
+
+.m-t-gw {
+  margin-top: $gw;
+}
+
+.m-t-gw-next {
+  & + .m-t-gw-next {
+    margin-top: $gw;
+  }
+}
+
+.m-b-gw {
+  margin-bottom: $gw;
+}
+
+.page__title {
+  @extend .m-t-gw;
+}
+
+.section__title {
+  text-align: center;
+}
+
+.section__controlls {
+  text-align: center;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .15s
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0
+}
+
+.form__control,
+.form__controll {
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.3) 3px 3px 15px;
+
+}
+
+.control {
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.3) 3px 3px 15px;
+  background: $white;
+}
+
+button {
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  position: relative;
+  padding-left: $gw;
+  &::before {
+    content: '';
+    position: absolute;
+    left: $gw/2 - 2;
+    top: $gw/2 - 2;
+    background-color: $text-primary;
+    border-radius: 50%;
+    width: 4px;
+    height: 4px;
+    z-index: 2;
+  }
+}
+
+dl {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.d-inline-flex {
+  display: inline-flex;
+}
+
+ul, pre {
+  margin: 0;
+}
+
+.d-flex {
+  display: flex;
+}
+
+ul, ol, li {
+  list-style: none !important;
+  padding-left: 0;
+}
+
+li::before {
+  content: none;
+}
+.el-button.pull-right,
+.pull-right {
+  margin-left: auto;
+}
+
+.align-self-start {
+  align-self: start;
+}
+
+
+.form__input-wrap {
+  position: relative;
+  margin-bottom: $gw;
+
+  .form__field-message {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 2;
+
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 13px;
+    color: $red
+  }
+}
+
+.form__input {
+
+}
+
+.form__input-name {
+  margin-bottom: $gw/2;
+}
+
+.form__input.mod__error {
+  input,
+  input:focus {
+    border-color: $red;
+  }
+  & + .form__field-message {
+    color: $red;
+  }
+}
+
+.form__submit {
+  margin-top: $gw;
+}

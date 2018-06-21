@@ -1,0 +1,73 @@
+$breakpoints: (
+        'phone': 320px,
+        'tablet': 768px,
+        'xs': '>=0',
+        's': '>=540px',
+        'sm': '>=768px',
+        'md': '>=992px',
+        'd': '>=1200px',
+        'td': '>=768px',
+        'desktop': 1024px
+) !default;
+
+$bp: (
+        'xs': map_get($breakpoints,xs),
+        's': map_get($breakpoints,s),
+        'sm': map_get($breakpoints,sm),
+        'md': map_get($breakpoints,md),
+        'd': map_get($breakpoints,d),
+) !default;
+
+
+
+$media-expressions: (
+        'screen': 'screen',
+        'print': 'print',
+        'handheld': 'handheld',
+        'landscape': '(orientation: landscape)',
+        'portrait': '(orientation: portrait)',
+        'retina2x': '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi), (min-resolution: 2dppx)',
+        'retina3x': '(-webkit-min-device-pixel-ratio: 3), (min-resolution: 350dpi), (min-resolution: 3dppx)'
+) !default;
+
+//Grid
+$gw: 20px;
+$gutter-width: $gw;
+$grid-width-base: 1920px;
+$grid-width-minus-gw: $grid-width-base - $gutter-width*2;
+$grid-width: $grid-width-base + $gutter-width*2;
+$click-area: 8px;
+$grid-columns: 12;
+
+//transitions
+$transition-std: cubic-bezier(.21, .38, .77, .64) 0.3s;
+$transition-long: ease-out 0.6s;
+$transition: ease-out;
+$transition-bezier: cubic-bezier(.21, .38, .77, .64) 0.6s;
+
+//colors
+$default: #fff;
+$secondary: teal;
+$secondary-lighten: lighten($secondary, 7);
+$text-primary: #606266;
+$complementary: #f5f7fa;
+$complementary-light: lighten($complementary, 7);
+$complementary-dark: darken($complementary, 7);
+
+$white: #fff;
+$red: #f56c6c;
+$red-lighten: lighten($red, 8);
+$green: teal;
+$green-lighten: lighten($green, 8);
+
+//fonts
+$font-base: 'Roboto', sans-serif;
+$font-base-thin: 100;
+$font-base-light: 300;
+$font-base-regular: 400;
+
+// Other
+$br: 4px;
+
+$gray: #e8e8e8;
+$border-gray: 1px solid $gray;
