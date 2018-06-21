@@ -1,152 +1,145 @@
 import {Validator} from 'vee-validate';
+import vValidator from 'vee-validate';
 import Vue from 'vue';
 import VueI18n from 'vue-i18n';
 
 import store from 'store';
 
 class I18n {
-    switchMessage(value, message) {
-        const valueIsObj = (typeof value[0] === 'object');
-        if (valueIsObj) {
-            const valsArray = value[0];
-            Object.keys(valsArray).map((val, i) => {
-                message = message.replace(`{${i}}`, valsArray[val]);
-            });
-            return message;
-        } else {
-            console.warn('IS OBJECT', valueIsObj);
-            return message.replace('{0}', value);
+  constructor(data = null) {
+    this.defaultLocale = 'en';
+    this.locales = ['en', 'ru'];
+    if (data) {
+      for (let field in data) {
+        this[field] = data[field];
+        if (this[field].type) {
+          this[field].type = data[field].type;
         }
+      }
+    }
+  }
+
+  i18n;
+
+  init(priority) {
+    priority.push(this.defaultLocale);
+
+    let startLocale;
+    for (const locale of priority) {
+      if (this.locales.find((value) => value === locale)) {
+        startLocale = locale;
+        break;
+      }
     }
 
-    switchRule = (rule, value, messages, field) => {
-        let message = messages[rule];
-
-        switch (rule) {
-            case'after':
-                const n = value;
-                const t = n[0];
-                const t1 = n[1];
-                const multirules = (message.indexOf('{:}') !== -1);
-
-                if (multirules) {
-                    let spl = message.split('{:}');
-                    if (t1) {
-                        message = spl[1]
-                    } else {
-                        message = spl[0]
-                    }
-                }
-                Object.keys(t).map((val, i) => {
-                    message = message.replace(`{${i}}`, t[val]).replace(`{${i}}`, t[val]).replace('{fieldName}', field);
-                });
-
-                return message;
-
-            case 'before':
-            case 'between' :
-            case 'decimal':
-            case 'date_between' :
-            case 'date_format' :
-            case 'digits' :
-            case 'dimensions' :
-            case 'length' :
-            case 'min_value' :
-            case 'max_value' :
-            case 'max' :
-            case 'min' :
-            case 'size' :
-                return this.switchMessage(value, message);
-            default:
-                // in case ['alpha_dash','length',alpha_num','alpha_spaces','alpha','in','confirmed',
-                // 'credit_card','decimal','email','ext','image','integer','ip','mimes','not_in',
-                // 'numeric','regex','required', 'url']
-                return message;
-        }
-    };
-
-    constructor(data = null) {
-        this.defaultLocale = 'en';
-        this.locales = ['en', 'ru', 'ua'];
-        if (data) {
-            for (let field in data) {
-                this[field] = data[field];
-                if (this[field].type) {
-                    this[field].type = data[field].type;
-                }
-            }
-        }
+    const messages = {};
+    for (const locale of this.locales) {
+      messages[locale] = {};
     }
 
-    i18n;
+    Vue.use(VueI18n);
+    this.i18n = new VueI18n({
+      locale: startLocale,
+      silentTranslationWarn: false,
+      messages,
+    });
 
-    init(priority) {
-        priority.push(this.defaultLocale);
+    return this.loadLocaleData(startLocale).then(() => {
+      Validator.localize(startLocale);
+      return this.i18n;
+    });
+  }
 
-        let startLocale;
-        for (const locale of priority) {
-            if (this.locales.find((value) => value === locale)) {
-                startLocale = locale;
-                break;
-            }
-        }
+  loadLocaleData(locale) {
+    store.state.loading = true;
+    return System.import('../assets/i18n/' + locale + '.json')
+      .then((data) => {
+        store.state.localization = data;
+        this.i18n.setLocaleMessage(locale, data);
+        const validationDictionary = {};
+        const v_messages = data.validation.messages;
 
-        const messages = {};
-        for (const locale of this.locales) {
-            messages[locale] = {};
-        }
+        const messages = {
+          after: function (e, n) {
+            return n[1] ? v_messages['after_inclusion'].replace('{fieldName}', e).replace('{0}', n[0]).replace('{1}', n[1]) : v_messages['after'].replace('{fieldName}', e).replace('{0}', n[0]);
+          }, alpha_dash: function (n) {
+            return v_messages['alpha_dash'].replace('{fieldName}', n);
+          }, alpha_num: function (n) {
+            return v_messages['alpha_num'].replace('{fieldName}', n);
+          }, alpha_spaces: function (n) {
+            return v_messages['alpha_spaces'].replace('{fieldName}', n);
+          }, alpha: function (n) {
+            return v_messages['alpha'].replace('{fieldName}', n);
+          }, before: function (n, e) {
+            const key = Object.keys(e[0])[0]
+            return v_messages['before'].replace('{fieldName}', n).replace('{0}', key);
+          }, between: function (n, e) {
+            return v_messages['between'].replace('{fieldName}', n).replace('{0}', e[0]).replace('{1}', e[1])
+          }, confirmed: function (n, e) {
+            return v_messages['confirmed'].replace('{fieldName}', n);
+          }, credit_card: function (n) {
+            return v_messages['credit_card'].replace('{fieldName}', n);
+          }, date_between: function (n, e) {
+            return v_messages['date_between'].replace('{fieldName}', n).replace('{0}', e[0].min).replace('{1}', e[0].max)
+          }, date_format: function (n, e) {
+            return v_messages['date_format'].replace('{fieldName}', n).replace('{0}', e[0])
+          }, decimal: function (n, e) {
+            void 0 === e && (e = []);
+            let t = e[0];
+            return void 0 === t && (t = "*"), v_messages['decimal'].replace('{fieldName}', n).replace('{0}', ("*" === t ? "" : t))
+          }, digits: function (n, e) {
+            return v_messages['digits'].replace('{fieldName}', n).replace('{0}', e[0])
+          }, dimensions: function (n, e) {
+            return v_messages['dimensions'].replace('{fieldName}', n).replace('{0}', e[0]).replace('{1}', e[1])
+          }, email: function (n) {
+            return v_messages['email'].replace('{fieldName}', n);
+          }, ext: function (n, e) {
+            return v_messages['ext'].replace('{fieldName}', n).replace('{0}', e.slice(0))
+          }, image: function (n) {
+            return v_messages['image'].replace('{fieldName}', n);
+          }, in: function (n) {
+            return v_messages['in'].replace('{fieldName}', n);
+          }, ip: function (n) {
+            return v_messages['ip'].replace('{fieldName}', n);
+          }, max: function (n, e) {
+            return v_messages['max'].replace('{fieldName}', n).replace('{0}', e[0])
+          }, max_value: function (n, e) {
+            return v_messages['max_value'].replace('{fieldName}', n).replace('{0}', e[0])
+          }, mimes: function (n, e) {
+            return v_messages['mimes'].replace('{fieldName}', n).replace('{0}', e.slice(0))
+          }, min: function (n, e) {
+            return v_messages['min'].replace('{fieldName}', n).replace('{0}', e[0])
+          }, min_value: function (n, e) {
+            return v_messages['min_value'].replace('{fieldName}', n).replace('{0}', e[0])
+          }, not_in: function (n) {
+            return v_messages['not_in'].replace('{fieldName}', n);
+          }, numeric: function (n) {
+            return v_messages['numeric'].replace('{fieldName}', n);
+          }, regex: function (n) {
+            return v_messages['regex'].replace('{fieldName}', n);
+          }, required: function (n) {
+            return v_messages['required'].replace('{fieldName}', n);
+          }, size: function (n, e) {
+            let t, r, u, i = e[0];
+            return v_messages['size'].replace('{fieldName}', n).replace('{0}', (t = i, r = 1024, u = 0 == (t = Number(t) * r) ? 0 : Math.floor(Math.log(t) / Math.log(r)), 1 * (t / Math.pow(r, u)).toFixed(2) + " " + ["Byte", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"][u]));
+          }, url: function (n) {
+            return v_messages['url'].replace('{fieldName}', n);
+          }
+        };
 
-        Vue.use(VueI18n);
-        this.i18n = new VueI18n({
-            locale: startLocale,
-            silentTranslationWarn: false,
-            messages,
-        });
+        validationDictionary[locale] = {
+          attributes: data.validation.attributes,
+          messages: messages,
+        };
 
-        return this.loadLocaleData(startLocale).then(() => {
-            Validator.localize(startLocale);
-            return this.i18n;
-        });
-    }
+        Validator.localize(validationDictionary);
 
-    loadLocaleData(locale) {
-        store.state.loading = true;
-        return System.import('../assets/i18n/' + locale + '.json')
+        store.state.loading = false;
 
+        return data;
+      });
 
-            .then((data) => {
-                this.i18n.setLocaleMessage(locale, data);
-                const validationDictionary = {};
-
-                validationDictionary[locale] = {
-                    attributes: data.validation.attributes,
-                    messages: {},
-                };
-
-                for (const rule in data.validation.messages) {
-                    let messages = data.validation.messages;
-
-                    if (data.validation.messages.hasOwnProperty(rule)) {
-
-                        validationDictionary[locale].messages[rule] = (field, value, event) => {
-                            return this.switchRule(rule, value, messages, field).replace('{fieldName}', field);
-                        }
-                    }
-                }
-
-                Validator.localize(validationDictionary);
-
-                store.state.loading = false;
-
-                return data;
-
-
-            });
-
-
-    }
-
-
+  }
 }
 
 export default new I18n();

@@ -1,38 +1,40 @@
-import UsersApi from '../../../api/Users';
+import API from 'src/api';
+import DataBus from 'src/data/data.bus'
 
-function fetchAll(store,) {
-    return UsersApi.getAll().then((users) => {
-        store.commit('setList', users);
+function login(store, user) {
+  return API.post('/login', {
+    email: user.email,
+    password: user.password,
 
-        return users;
+  }).then((response) => {
+    store.commit('setAuthorized', response.data);
+    return response.data;
+
+  }).catch(error => {
+    console.dir(error.response.status);
+    const status = error.response && error.response.status ? error.response.status : undefined;
+    let message;
+    switch(status){
+      case 304:
+        message = 'access denied';
+        break;
+      default:
+        message = 'Something went wrong...  ';
+    }
+
+    DataBus.$message({
+      type: 'error',
+      message: message
     });
+    return Promise.reject(error.response.status);
+  });
 }
 
-function login(store, user,) {
-
-    return UsersApi.login(user.email, user.password)
-        .then((user) => {
-            store.commit('setAuthorized', user);
-            return user;
-        });
-}
-
-function resetAuthorization(store,) {
-    store.commit('setAuthorized', null);
-}
-
-function signUp(store, user,) {
-    return UsersApi.register(user)
-        .then((addedUser) => {
-            store.commit('add', addedUser);
-            store.commit('setAuthorized', user);
-            return addedUser;
-        });
+function resetAuthorization(store) {
+  store.commit('setAuthorized', null);
 }
 
 export default {
-    fetchAll,
-    login,
-    resetAuthorization,
-    signUp,
+  login,
+  resetAuthorization,
 };

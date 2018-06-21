@@ -1,8 +1,11 @@
 export default class RootState {
-    loading;
-    locale = 'en';
+  loadings;
+  localization;
+  locale = 'en';
 
-    constructor() {
-        this.loading = false;
-    }
+  constructor() {
+    this.loadings = void 0;
+    this.loading = false;
+    this.localization = null;
+  }
 }

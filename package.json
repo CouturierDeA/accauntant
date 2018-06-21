@@ -1,7 +1,7 @@
 {
   "name": "Accauntant",
   "version": "1.0.0",
-  "description": "A Vue.js project",
+  "description": "A Vue.js test project",
   "scripts": {
     "dev": "node build/dev-server.js",
     "build": "node build/build.js",
@@ -10,6 +10,7 @@
     "lint": "eslint --ext .js,.vue src"
   },
   "dependencies": {
+    "aos": "^2.3.0",
     "axios": "^0.17.1",
     "bootstrap": "^4.0.0",
     "element-theme-chalk": "^2.2.1",
@@ -17,9 +18,8 @@
     "gsap": "^1.20.4",
     "jquery": "^3.3.1",
     "normalize.scss": "^0.1.0",
-    "signature_pad": "^2.3.2",
     "vee-validate": "*",
-    "vue": "^2.5.13",
+    "vue": "2.5.16",
     "vue-i18n": "^7.4.2",
     "vue-meta": "^1.4.3",
     "vue-router": "^2.2.0",

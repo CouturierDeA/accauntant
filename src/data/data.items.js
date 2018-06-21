@@ -1,7 +1,17 @@
-export const items = [
-    {name: 'First Item', number: 1, price: 10},
-    {name: 'Second Item', number: 2, price: 20},
-    {name: 'Third Item', number: 3, price: 30},
-];
+import {Item} from './data.ItemClass'
+
+export const ItemsClass = (data)=> {
+  const items = [];
+  if (data) {
+    for (let i = 0; i < data.length; i++) {
+      items.push(new Item(data[i]))
+    }
+  }
+  return items;
+};
+
+
+
+
 
 

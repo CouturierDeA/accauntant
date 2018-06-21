@@ -1,30 +1,27 @@
 import API from '../api';
 
-function getAll() {
-    return API.get('/tasks').then((response) => {
-        return response.data;
-    });
+function deleteTask(id) {
+  return API.post('/deleteTask', id).then((response) => {
+    return response.data;
+
+  }).catch(error => {
+    return Promise.reject(1);
+  });
+
 }
 
-function updateAll(tasks) {
-    return API.post('/update_tasks', tasks)
-        .then((response) => {
-            const tasks = response.data;
-            console.log(user);
+function saveTask(task) {
+  return API.post('/saveTask',
+    task).then((response) => {
+    return response.data;
 
-            if (tasks.length === 0) {
-                return Promise.reject(1);
-            }
-
-            return tasks;
-
-        }).catch(error => {
-            return Promise.reject(1);
-        });
+  }).catch(error => {
+    return Promise.reject(1);
+  });
 }
 
 export default {
-    getAll,
-    updateAll,
+  saveTask,
+  deleteTask,
 
 }

@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-
-import tasksModule from './modules/tasks';
+import workItems from './modules/workItems';
 import userModule from './modules/user';
 import actions from './root/actions';
 import getters from './root/getters';
@@ -17,7 +16,7 @@ export const store = new Vuex.Store({
     getters,
     modules: {
         user: userModule,
-        tasks: tasksModule,
+        workItems: workItems,
     },
     mutations,
     plugins,

@@ -1,7 +1,9 @@
 {
+  "SiteTitle": "Airbill",
   "validation": {
     "messages": {
-      "after": "The {fieldName} must be after {0}.{:} The {fieldName} must be after or equal to {0}.",
+      "after": "The {fieldName} must be after {0}.",
+      "after_inclusion": "The {fieldName} must be after {0} or equal to {1}.",
       "alpha_dash": "The {fieldName} field may contain alpha-numeric characters as well as dashes and underscores.",
       "alpha_num": "The {fieldName} field may only contain alpha-numeric characters.",
       "alpha_spaces": "The {fieldName} field may only contain alphabetic characters as well as spaces.",
@@ -43,10 +45,8 @@
   },
   "errors": {
     "access_denied": "Access denied",
-    "common": "Something went wrong..."
-  },
-  "test_page": {
-    "title": "Test Page"
+    "common": "Something went wrong...",
+    "correct_errors_before_submit": "Correct errors before submit"
   },
   "sign_in": {
     "title": "Sign In",
@@ -54,22 +54,40 @@
     "do_not_have_account": "Don't have an account?",
     "forgot_password": "Forgot password?"
   },
-  "tasks": {
-    "title": "Tasks",
+  "airbill": {
+    "title": "Airbill",
     "list_title": "Task List",
     "add_label": "Add Task",
     "add": "Add",
+    "task": "task",
+    "bug": "bug",
     "delete": "Delete",
     "pending": "Pending",
     "completed": "Completed",
     "restore": "Restore",
     "deleted": "Deleted"
   },
-  "accountant-table": {
-    "title": "Accountant Table"
-  },
   "general": {
     "title": "Vue Test App",
-    "logout": "Logout"
+    "add_item": "Add item",
+    "add": "Add",
+    "type": "Type",
+    "tip": "Tip",
+    "name": "name",
+    "logout": "Logout",
+    "total": "Total",
+    "search": "Do search",
+    "submit": "Submit",
+    "summary": "Summary",
+    "clear": "Clear",
+    "checked": "Checked",
+    "number": "Number",
+    "price": "Price",
+    "count": "Count",
+    "item_name": "Item name",
+    "operations": "operations",
+    "not_selected": "not selected",
+    "delete_canceled": "Delete canceled",
+    "search_items": "Search items"
   }
 }
